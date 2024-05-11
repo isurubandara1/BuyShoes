@@ -9,6 +9,10 @@ import ProfileScreen from './ProfileScreen'; // Import ProfileScreen component
 
 const Tab = createBottomTabNavigator();
 
+// const navigateToFavorites = () => {
+//   navigation.navigate('Favorites', { favorites }); // Pass favorites list as navigation parameter
+// };
+
 function App() {
   return (
     <Tab.Navigator
@@ -33,10 +37,13 @@ function App() {
         },
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Favorites" component={FavoritesScreen} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }} // Hide the header for the Home screen
+      />
+      <Tab.Screen name="Favorites" component={FavoritesScreen}  />
       <Tab.Screen name="Cart" component={CartScreen} />
-      
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
