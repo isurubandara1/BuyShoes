@@ -59,7 +59,7 @@ const HomeScreen = () => {
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
-
+ 
   const sortByPrice = (type) => {
     const sorted = [...products].sort((a, b) => {
       if (type === 'lowToHigh') {
@@ -88,8 +88,9 @@ const HomeScreen = () => {
   );
 
   const navigateToFavorites = () => {
-    navigation.navigate('Favorites', { favorites }); // Pass favorites list as navigation parameter
+    navigation.navigate('Favorites', { favorites, products }); // Pass favorites and products as navigation parameters
   };
+  
 
   return (
     <SafeAreaView>
