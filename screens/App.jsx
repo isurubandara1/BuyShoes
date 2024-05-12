@@ -18,7 +18,7 @@ function App() {
   const navigation = useNavigation(); // Initialize useNavigation hook
 
   const navigateToFavorites = () => {
-    navigation.navigate('Favorites', { favorites, products }); // Pass favorites and products as navigation parameters
+    navigation.navigate('Favorites', { favorites: updatedFavorites, products });// Pass favorites and products as navigation parameters
   };
 
   return (

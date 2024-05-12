@@ -88,12 +88,13 @@ const HomeScreen = () => {
     navigation.navigate('Favorites', { favorites: updatedFavorites, products });
   };
 
+
   const filteredProducts = sortedProducts.filter(product =>
     product.description.toLowerCase().includes(searchText.toLowerCase())
   );
 
   const navigateToFavorites = () => {
-    navigation.navigate('Favorites', { favorites, products }); // Pass favorites and products as navigation parameters
+    navigation.navigate('Favorites', { favorites: updatedFavorites, products });// Pass favorites and products as navigation parameters
   };
   
   
