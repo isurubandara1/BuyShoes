@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     marginVertical: 10,
+
   },
   imageTextContainer: {
     alignItems: 'center',
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 8,
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 5,
   },
   noFavoritesText: {
     fontSize: 16,
