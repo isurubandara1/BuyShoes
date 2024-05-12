@@ -2,8 +2,12 @@ import React from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const FavoritesScreen = ({ route }) => {
-  const { favorites, products } = route.params; // Receive favorites and products from navigation parameters
+const FavoritesScreen = ({ route, navigation }) => {
+  const { favorites, products, onDeleteFavorite } = route.params; // Receive favorites, products, and onDeleteFavorite function from navigation parameters
+
+  const handleDeleteFavorite = (productId) => {
+    onDeleteFavorite(productId); // Call the onDeleteFavorite function passed from the navigation parameters
+  };
 
   return (
     <View style={styles.container}>
@@ -21,7 +25,10 @@ const FavoritesScreen = ({ route }) => {
                 {/* Product price */}
                 <Text style={styles.textPrice}>{product.price}</Text>
                 {/* Delete button */}
-                <TouchableOpacity style={styles.deleteButton}>
+                <TouchableOpacity
+                  style={styles.deleteButton}
+                  onPress={() => handleDeleteFavorite(product.id)}
+                >
                   <Icon name="trash" size={20} color="#fff" />
                 </TouchableOpacity>
               </View>
@@ -33,7 +40,9 @@ const FavoritesScreen = ({ route }) => {
       </ScrollView>
     </View>
   );
-}
+};
+
+
 
 const styles = StyleSheet.create({
   container: {
