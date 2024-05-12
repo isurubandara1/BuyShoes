@@ -73,14 +73,19 @@ const HomeScreen = () => {
   };
 
   const handleFavoriteToggle = (productId) => {
-    const index = favorites.indexOf(productId);
+    const updatedFavorites = [...favorites]; // Create a copy of the current favorites list
+  
+    const index = updatedFavorites.indexOf(productId);
     if (index === -1) {
-      setFavorites([...favorites, productId]); // Add to favorites
+      updatedFavorites.push(productId); // Add to favorites if not already in the list
     } else {
-      const updatedFavorites = [...favorites];
-      updatedFavorites.splice(index, 1); // Remove from favorites
-      setFavorites(updatedFavorites);
+      updatedFavorites.splice(index, 1); // Remove from favorites if already in the list
     }
+  
+    setFavorites(updatedFavorites); // Update the favorites list
+  
+    // Update the favorites in the FavoritesScreen as well
+    navigation.navigate('Favorites', { favorites: updatedFavorites, products });
   };
 
   const filteredProducts = sortedProducts.filter(product =>
@@ -91,8 +96,10 @@ const HomeScreen = () => {
     navigation.navigate('Favorites', { favorites, products }); // Pass favorites and products as navigation parameters
   };
   
+  
 
   return (
+    
     <SafeAreaView>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.container}>

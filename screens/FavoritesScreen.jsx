@@ -2,12 +2,8 @@ import React from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const FavoritesScreen = ({ route, navigation }) => {
-  const { favorites, products, onDeleteFavorite } = route.params; // Receive favorites, products, and onDeleteFavorite function from navigation parameters
-
-  const handleDeleteFavorite = (productId) => {
-    onDeleteFavorite(productId); // Call the onDeleteFavorite function passed from the navigation parameters
-  };
+const FavoritesScreen = ({ route }) => {
+  const { favorites, products } = route.params; // Receive favorites and products from navigation parameters
 
   return (
     <View style={styles.container}>
@@ -25,10 +21,7 @@ const FavoritesScreen = ({ route, navigation }) => {
                 {/* Product price */}
                 <Text style={styles.textPrice}>{product.price}</Text>
                 {/* Delete button */}
-                <TouchableOpacity
-                  style={styles.deleteButton}
-                  onPress={() => handleDeleteFavorite(product.id)}
-                >
+                <TouchableOpacity style={styles.deleteButton}>
                   <Icon name="trash" size={20} color="#fff" />
                 </TouchableOpacity>
               </View>
@@ -40,9 +33,7 @@ const FavoritesScreen = ({ route, navigation }) => {
       </ScrollView>
     </View>
   );
-};
-
-
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -58,11 +49,11 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     paddingBottom: 20,
+    paddingBottom: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     marginVertical: 10,
-
   },
   imageTextContainer: {
     alignItems: 'center',
@@ -95,7 +86,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 8,
     alignItems: 'center',
-    marginTop: 5,
+    marginTop: 10,
   },
   noFavoritesText: {
     fontSize: 16,
