@@ -7,9 +7,12 @@ import FavoritesScreen from './FavoritesScreen'; // Import FavoritesScreen compo
 import CartScreen from './CartScreen'; // Import CartScreen component
 import ProfileScreen from './ProfileScreen'; // Import ProfileScreen component
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
-
+import LargePage from './LargePage';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 
 function App() {
@@ -22,6 +25,7 @@ function App() {
   };
 
   return (
+    
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
@@ -59,7 +63,14 @@ function App() {
       <Tab.Screen name="Cart" component={CartScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
+      
+      <Stack.Screen name="LargePage" component={LargePage} />
+      
     </Tab.Navigator>
+    
+
+    
+    
   );
 }
 

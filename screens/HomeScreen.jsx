@@ -97,8 +97,12 @@ const HomeScreen = () => {
     navigation.navigate('Favorites', { favorites: updatedFavorites, products });// Pass favorites and products as navigation parameters
   };
   
+  const handleImagePress = () => {
+    navigation.navigate('LargePage');
+  };
   
-
+  
+  
   return (
     
     <SafeAreaView>
@@ -132,7 +136,7 @@ const HomeScreen = () => {
                     color={favorites.includes(product.id) ? 'pink' : 'black'}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity><View style={styles.imageContainer}><Image source={product.image} style={styles.image} /></View></TouchableOpacity>
+                <TouchableOpacity onPress={handleImagePress}><View style={styles.imageContainer}><Image source={product.image} style={styles.image} /></View></TouchableOpacity>
                 <Text style={styles.textDescription}>{product.description}</Text>
                 <Text style={styles.textPrice}>{product.price}</Text>
               </View>
