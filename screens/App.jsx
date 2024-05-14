@@ -2,18 +2,14 @@ import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons'; // Import icons from Expo
 import HomeScreen from './HomeScreen';
-import SettingsScreen from './SettingsScreen';
 import FavoritesScreen from './FavoritesScreen'; // Import FavoritesScreen component
 import CartScreen from './CartScreen'; // Import CartScreen component
 import ProfileScreen from './ProfileScreen'; // Import ProfileScreen component
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 import LargePage from './LargePage';
-import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
-
 
 function App() {
   const [favorites, setFavorites] = React.useState([]);
@@ -21,55 +17,45 @@ function App() {
   const navigation = useNavigation(); // Initialize useNavigation hook
 
   const navigateToFavorites = () => {
-    navigation.navigate('Favorites', { favorites: updatedFavorites, products });// Pass favorites and products as navigation parameters
+    navigation.navigate('Favorites', { favorites, products }); // Pass favorites and products as navigation parameters
   };
 
   return (
-    
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
 
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Settings') {
-            iconName = focused ? 'settings' : 'settings-outline';
-          } else if (route.name === 'Favorites') {
-            iconName = focused ? 'heart' : 'heart-outline';
-          } else if (route.name === 'Cart') {
-            iconName = focused ? 'cart' : 'cart-outline';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'person' : 'person-outline';
-          }
+            if (route.name === 'Home') {
+              iconName = focused ? 'home' : 'home-outline';
+            } else if (route.name === 'Favorites') {
+              iconName = focused ? 'heart' : 'heart-outline';
+            } else if (route.name === 'Cart') {
+              iconName = focused ? 'cart' : 'cart-outline';
+            } else if (route.name === 'Profile') {
+              iconName = focused ? 'person' : 'person-outline';
+            }
 
-          // Return an Ionicons component with the appropriate name and style
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-      })}
-    >
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        initialParams={{ favorites, setFavorites, navigateToFavorites }}
-        options={{ headerShown: false }} // Hide the header for the Home screen
-      />
-      <Tab.Screen
-        name="Favorites"
-        component={FavoritesScreen}
-        onPress={navigateToFavorites} 
-        initialParams={{ favorites, products }} 
-      />
-      <Tab.Screen name="Cart" component={CartScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-      
-      <Stack.Screen name="LargePage" component={LargePage} />
-      
-    </Tab.Navigator>
-    
-
-    
+            // Return an Ionicons component with the appropriate name and style
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+      >
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          initialParams={{ favorites, setFavorites, navigateToFavorites }}
+          options={{ headerShown: false }} // Hide the header for the Home screen
+        />
+        <Tab.Screen
+          name="Favorites"
+          component={FavoritesScreen}
+          initialParams={{ favorites, products }}
+        />
+        <Tab.Screen name="Cart" component={CartScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen name="LargePage" component={LargePage} options={{ tabBarButton: () => null }} />
+      </Tab.Navigator>
     
   );
 }
