@@ -132,7 +132,7 @@ const HomeScreen = () => {
                     color={favorites.includes(product.id) ? 'pink' : 'black'}
                   />
                 </TouchableOpacity>
-                <Image source={product.image} style={styles.image} />
+                <TouchableOpacity><View style={styles.imageContainer}><Image source={product.image} style={styles.image} /></View></TouchableOpacity>
                 <Text style={styles.textDescription}>{product.description}</Text>
                 <Text style={styles.textPrice}>{product.price}</Text>
               </View>
@@ -215,13 +215,13 @@ const styles = StyleSheet.create({
     width: '45%', 
     margin: 5,
     padding: 10,
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#26C281',
     borderRadius: 10,
   },
   image: {
     width: '100%',
     height: 100,
-    resizeMode: 'contain',
+    resizeMode: 'cover',
     marginBottom: 10,
   },
   textDescription: {
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
     elevation: 2,
     marginBottom: 10,
     width: 200,
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#26C281',
     alignItems: 'center',
   },
   modalButtonText: {
