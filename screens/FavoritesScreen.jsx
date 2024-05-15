@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     width: '45%',
     margin: 5,
     padding: 10,
-    backgroundColor: '#d3d3d3',
+    backgroundColor: '#90CAF9',
     borderRadius: 10,
   },
   image: {

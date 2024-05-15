@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TextInput, TouchableOpacity, Modal, Pressable } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 import Icon from 'react-native-vector-icons/FontAwesome'; // Import the icon from the library
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 
@@ -104,25 +104,29 @@ const HomeScreen = () => {
   
   
   return (
-    
-    <SafeAreaView>
+    <View style={styles.container}>
+      <View style={styles.wlimageContainer}>
+        <Image source={require('../assets/images/wal.jpg')} style={styles.wlimage} />
+      </View>
+      <View style={styles.fixedContent}>
+        <View style={styles.searchContainer}>
+          <Icon name="search" size={20} color="#888" style={styles.searchIcon} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search items..."
+            value={searchText}
+            onChangeText={setSearchText}
+          />
+          <TouchableOpacity onPress={toggleModal} style={styles.filterIcon}>
+            <Icon name="filter" size={20} color="#888" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.newCollectionContainer}>
+          <Text style={styles.newCollectionText}>New Collection</Text>
+        </View>
+      </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.container}>
-          <View style={styles.searchContainer}>
-            <Icon name="search" size={20} color="#888" style={styles.searchIcon} />
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Search items..."
-              value={searchText}
-              onChangeText={setSearchText}
-            />
-            <TouchableOpacity onPress={toggleModal} style={styles.filterIcon}>
-              <Icon name="filter" size={20} color="#888" />
-            </TouchableOpacity>
-          </View>
-          <View style={styles.newCollectionContainer}>
-            <Text style={styles.newCollectionText}>New Collection</Text>
-          </View>
+        <View style={styles.contentContainer}>
           <View style={styles.imageContainer}>
             {filteredProducts.map((product, index) => (
               <View style={styles.imageTextContainer} key={index}>
@@ -133,10 +137,14 @@ const HomeScreen = () => {
                   <Icon
                     name={favorites.includes(product.id) ? 'heart' : 'heart-o'}
                     size={20}
-                    color={favorites.includes(product.id) ? 'pink' : 'black'}
+                    color={favorites.includes(product.id) ? '#EC407A' : 'black'}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handleImagePress}><View style={styles.imageContainer}><Image source={product.image} style={styles.image} /></View></TouchableOpacity>
+                <TouchableOpacity onPress={handleImagePress}>
+                  <View style={styles.imageContainer}>
+                    <Image source={product.image} style={styles.image} />
+                  </View>
+                </TouchableOpacity>
                 <Text style={styles.textDescription}>{product.description}</Text>
                 <Text style={styles.textPrice}>{product.price}</Text>
               </View>
@@ -146,38 +154,47 @@ const HomeScreen = () => {
             <Text>Go to Favorites</Text>
           </TouchableOpacity>
         </View>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={toggleModal}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Pressable onPress={() => sortByPrice('lowToHigh')} style={styles.modalButton}>
-                <Text style={styles.modalButtonText}>From Low to High</Text>
-              </Pressable>
-              <Pressable onPress={() => sortByPrice('highToLow')} style={styles.modalButton}>
-                <Text style={styles.modalButtonText}>From High to Low</Text>
-              </Pressable>
-            </View>
-          </View>
-        </Modal>
       </ScrollView>
-    </SafeAreaView>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={toggleModal}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Pressable onPress={() => sortByPrice('lowToHigh')} style={styles.modalButton}>
+              <Text style={styles.modalButtonText}>From Low to High</Text>
+            </Pressable>
+            <Pressable onPress={() => sortByPrice('highToLow')} style={styles.modalButton}>
+              <Text style={styles.modalButtonText}>From High to Low</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+    </View>
   );
 }
 
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  scrollContainer: {
-    flexGrow: 1,
-  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
   },
+  wlimageContainer: {
+    height: 250,
+    width: '100%',
+    backgroundColor: 'lightgray',
+  },
+  wlimage: {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode:'stretch',
+  },
+  
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -199,12 +216,13 @@ const styles = StyleSheet.create({
   },
   newCollectionContainer:{
       alignItems:'flex-start',
-      marginLeft:8,
-      padding:10,
+      marginLeft:18,
   },
   newCollectionText:{
     fontSize:30,
     fontWeight:'bold',
+    color:"#0D47A1",
+    fontStyle:"italic",
   },
   imageContainer: {
     flexDirection: 'row',
@@ -219,7 +237,7 @@ const styles = StyleSheet.create({
     width: '45%', 
     margin: 5,
     padding: 10,
-    backgroundColor: '#26C281',
+    backgroundColor: '#90CAF9',
     borderRadius: 10,
   },
   image: {
@@ -271,7 +289,7 @@ const styles = StyleSheet.create({
     elevation: 2,
     marginBottom: 10,
     width: 200,
-    backgroundColor: '#26C281',
+    backgroundColor: '#90CAF9',
     alignItems: 'center',
   },
   modalButtonText: {
