@@ -228,7 +228,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginVertical: 10,
+    marginVertical:10,
   },
   imageTextContainer: {
     alignItems: 'center',
