@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     paddingVertical: 12,
     paddingHorizontal: 12,
-    borderRadius: 5,
+    borderRadius: 10,
     borderColor: 'grey',
   },
   sizeText: {
@@ -131,7 +131,10 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
   },
   selectedSizeButton: {
-    backgroundColor: '#3366ff', // Color change for selected size
+    backgroundColor: '#99ccff', 
+    elevation: 5,
+    borderColor:'#0066cc'
+    
   },
   selectedSizeText: {
     color: 'white', // Text color change for selected size
@@ -162,14 +165,14 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   addButton: {
-    backgroundColor: 'black',
+    backgroundColor: '#0040ff',
     padding: 15,
     borderRadius: 5,
     width: '45%',
     alignItems: 'center',
   },
   buyButton: {
-    backgroundColor: 'grey',
+    backgroundColor: '#002699',
     padding: 15,
     borderRadius: 5,
     width: '45%',
