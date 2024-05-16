@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const LargePage = () => {
   const [itemCount, setItemCount] = useState(1);
   const [selectedSize, setSelectedSize] = useState('M'); // Default size
+  const itemPrice = 50;
+  const totalPrice = itemPrice * itemCount;
 
   const increaseItemCount = () => {
     setItemCount(itemCount + 1);
@@ -27,7 +29,7 @@ const LargePage = () => {
       </View>
       <View style={styles.infoContainer}>
         <Text style={styles.description}>White and black leather adidas</Text>
-        <Text style={styles.price}>$50</Text>
+        <Text style={styles.price}>${totalPrice}</Text>
         <View style={styles.sizeContainer}>
           <TouchableOpacity
             style={[
@@ -108,8 +110,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   price: {
-    fontSize: 18,
-    marginBottom: 10,
+    fontSize: 25,
+    marginBottom: 20,
+    fontWeight:'bold',
   },
   sizeContainer: {
     flexDirection: 'row',
@@ -117,24 +120,21 @@ const styles = StyleSheet.create({
   },
   sizeButton: {
     marginRight: 10,
-    borderWidth: 2,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
+    borderWidth: 3,
+    paddingVertical: 12,
+    paddingHorizontal: 12,
     borderRadius: 5,
-    borderColor:'grey',
-
+    borderColor: 'grey',
   },
   sizeText: {
-    fontSize: 15,
+    fontSize: 16,
+    fontWeight:'bold',
   },
   selectedSizeButton: {
-    backgroundColor: '#0040ff',  
-    borderWidth:2,
-
+    backgroundColor: '#3366ff', // Color change for selected size
   },
   selectedSizeText: {
-    color: 'white', 
-    fontWeight:'bold',
+    color: 'white', // Text color change for selected size
   },
   counterContainer: {
     flexDirection: 'row',
