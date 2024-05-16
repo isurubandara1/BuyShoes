@@ -117,25 +117,30 @@ const styles = StyleSheet.create({
   },
   sizeButton: {
     marginRight: 10,
-    borderWidth: 1,
+    borderWidth: 2,
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 5,
-    borderColor: 'black',
+    borderColor:'grey',
+
   },
   sizeText: {
-    fontSize: 16,
+    fontSize: 15,
   },
   selectedSizeButton: {
-    backgroundColor: 'blue', // Color change for selected size
+    backgroundColor: '#0040ff',  
+    borderWidth:2,
+
   },
   selectedSizeText: {
-    color: 'white', // Text color change for selected size
+    color: 'white', 
+    fontWeight:'bold',
   },
   counterContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 20,
+    marginTop: 20,
   },
   counterButton: {
     borderWidth: 1,
