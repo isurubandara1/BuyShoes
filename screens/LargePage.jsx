@@ -97,7 +97,7 @@ const LargePage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#ABCDF0',
     padding: 20,
   },
   imageContainer: {
@@ -139,9 +139,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   selectedSizeButton: {
-    backgroundColor: '#99ccff',
+    backgroundColor: '#0040ff',
     elevation: 5,
-    borderColor: '#0066cc',
+    borderColor: '#002699',
   },
   selectedSizeText: {
     color: 'white', // Text color change for selected size
