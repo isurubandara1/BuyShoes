@@ -10,37 +10,44 @@ const products = [
     image: require('../assets/images/adidas/a1.png'),
     description: 'White and black leather adidas',
     price: '50$'
-  },{
+  },
+  {
     id: 2,
-    image: require('../assets/images/adidas/a1.png'),
-    description: 'White and black leather adidas',
+    image: require('../assets/images/adidas/a4.png'),
+    description: 'Long and black farther adidas',
     price: '60$'
-  },{
+  },
+  {
     id: 3,
     image: require('../assets/images/adidas/a1.png'),
     description: 'White and black leather adidas',
     price: '120$'
-  },{
+  },
+  {
     id: 4,
     image: require('../assets/images/adidas/a1.png'),
     description: 'White and black leather adidas',
     price: '10$'
-  },{
+  },
+  {
     id: 5,
     image: require('../assets/images/adidas/a1.png'),
     description: 'White and black leather adidas',
     price: '200$'
-  },{
+  },
+  {
     id: 6,
     image: require('../assets/images/adidas/a1.png'),
     description: 'White zz black leather adidas',
     price: '1050$'
-  },{
+  },
+  {
     id: 7,
     image: require('../assets/images/adidas/a1.png'),
     description: 'White and plo leather adidas',
     price: '2000$'
-  },{
+  },
+  {
     id: 8,
     image: require('../assets/images/adidas/a1.png'),
     description: 'White and black leather adidas',
@@ -59,7 +66,7 @@ const HomeScreen = () => {
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
- 
+
   const sortByPrice = (type) => {
     const sorted = [...products].sort((a, b) => {
       if (type === 'lowToHigh') {
@@ -74,35 +81,32 @@ const HomeScreen = () => {
 
   const handleFavoriteToggle = (productId) => {
     const updatedFavorites = [...favorites]; // Create a copy of the current favorites list
-  
+
     const index = updatedFavorites.indexOf(productId);
     if (index === -1) {
       updatedFavorites.push(productId); // Add to favorites if not already in the list
     } else {
       updatedFavorites.splice(index, 1); // Remove from favorites if already in the list
     }
-  
+
     setFavorites(updatedFavorites); // Update the favorites list
-  
+
     // Update the favorites in the FavoritesScreen as well
     navigation.navigate('Favorites', { favorites: updatedFavorites, products });
   };
-
 
   const filteredProducts = sortedProducts.filter(product =>
     product.description.toLowerCase().includes(searchText.toLowerCase())
   );
 
   const navigateToFavorites = () => {
-    navigation.navigate('Favorites', { favorites: updatedFavorites, products });// Pass favorites and products as navigation parameters
+    navigation.navigate('Favorites', { favorites, products });// Pass favorites and products as navigation parameters
   };
-  
-  const handleImagePress = () => {
-    navigation.navigate('LargePage');
+
+  const handleImagePress = (product) => {
+    navigation.navigate('LargePage', { product });
   };
-  
-  
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.wlimageContainer}>
@@ -141,7 +145,7 @@ const HomeScreen = () => {
                     color={favorites.includes(product.id) ? '#EC407A' : 'black'}
                   />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handleImagePress}>
+                <TouchableOpacity onPress={() => handleImagePress(product)}>
                   <View style={styles.imageContainer}>
                     <Image source={product.image} style={styles.image} />
                   </View>
@@ -193,61 +197,61 @@ const styles = StyleSheet.create({
     flex: 1,
     width: null,
     height: null,
-    resizeMode:'stretch',
-    opacity:0.9,
+    resizeMode: 'stretch',
+    opacity: 0.9,
   },
-  
+
   searchContainer: {
-    position:'absolute',
-    bottom:59,
+    position: 'absolute',
+    bottom: 59,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 2,
     borderColor: 'white',
     borderRadius: 10,
-    margin:15,
+    margin: 15,
     padding: 5,
-    opacity:1,
+    opacity: 1,
   },
   searchIcon: {
     marginRight: 10,
-    color:'white',
+    color: 'white',
   },
   searchInput: {
     flex: 1,
     height: 40,
-    color:'white',
+    color: 'white',
   },
   filterIcon: {
     marginLeft: 10,
-    color:'white',
+    color: 'white',
   },
-  newCollectionContainer:{
-      position:'relative',
-      alignItems:'flex-start',
-      marginLeft:18,
-      marginTop:20,
+  newCollectionContainer: {
+    position: 'relative',
+    alignItems: 'flex-start',
+    marginLeft: 18,
+    marginTop: 20,
   },
-  newCollectionText:{
-    fontSize:30,
-    fontWeight:'bold',
-    color:"#0D47A1",
-    fontStyle:"italic",
-    
+  newCollectionText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: "#0D47A1",
+    fontStyle: "italic",
+
   },
   imageContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginVertical:10,
+    marginVertical: 10,
   },
   imageTextContainer: {
     alignItems: 'center',
     justifyContent: 'center',
     height: 220,
-    width: '45%', 
+    width: '45%',
     margin: 5,
-    padding: 10,
+    padding: 8,
     backgroundColor: '#90CAF9',
     borderRadius: 10,
   },

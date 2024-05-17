@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useRoute } from '@react-navigation/native';
 
 const LargePage = () => {
+  const route = useRoute();
+  const { product } = route.params;
+
   const [itemCount, setItemCount] = useState(1);
   const [selectedSize, setSelectedSize] = useState('M'); // Default size
-  const itemPrice = 50;
+  const itemPrice = parseInt(product.price.replace('$', ''));
   const totalPrice = itemPrice * itemCount;
 
   const increaseItemCount = () => {
@@ -25,10 +29,10 @@ const LargePage = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.imageContainer}>
-        <Image source={require('../assets/images/adidas/a1.png')} style={styles.image} />
+        <Image source={product.image} style={styles.image} />
       </View>
       <View style={styles.infoContainer}>
-        <Text style={styles.description}>White and black leather adidas</Text>
+        <Text style={styles.description}>{product.description}</Text>
         <Text style={styles.price}>${totalPrice}</Text>
         <View style={styles.sizeContainer}>
           <TouchableOpacity
@@ -36,7 +40,8 @@ const LargePage = () => {
               styles.sizeButton,
               selectedSize === 'S' && styles.selectedSizeButton,
             ]}
-            onPress={() => selectSize('S')}>
+            onPress={() => selectSize('S')}
+          >
             <Text style={[styles.sizeText, selectedSize === 'S' && styles.selectedSizeText]}>S</Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -44,24 +49,27 @@ const LargePage = () => {
               styles.sizeButton,
               selectedSize === 'M' && styles.selectedSizeButton,
             ]}
-            onPress={() => selectSize('M')}>
+            onPress={() => selectSize('M')}
+          >
             <Text style={[styles.sizeText, selectedSize === 'M' && styles.selectedSizeText]}>M</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.sizeButton,
+              selectedSize === 'L' && styles.selectedSizeButton,
+            ]}
+            onPress={() => selectSize('L')}
+          >
+            <Text style={[styles.sizeText, selectedSize === 'L' && styles.selectedSizeText]}>L</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[
               styles.sizeButton,
               selectedSize === 'XL' && styles.selectedSizeButton,
             ]}
-            onPress={() => selectSize('XL')}>
+            onPress={() => selectSize('XL')}
+          >
             <Text style={[styles.sizeText, selectedSize === 'XL' && styles.selectedSizeText]}>XL</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.sizeButton,
-              selectedSize === 'XXL' && styles.selectedSizeButton,
-            ]}
-            onPress={() => selectSize('XXL')}>
-            <Text style={[styles.sizeText, selectedSize === 'XXL' && styles.selectedSizeText]}>XXL</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.counterContainer}>
@@ -112,7 +120,7 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 25,
     marginBottom: 20,
-    fontWeight:'bold',
+    fontWeight: 'bold',
   },
   sizeContainer: {
     flexDirection: 'row',
@@ -128,13 +136,12 @@ const styles = StyleSheet.create({
   },
   sizeText: {
     fontSize: 16,
-    fontWeight:'bold',
+    fontWeight: 'bold',
   },
   selectedSizeButton: {
-    backgroundColor: '#99ccff', 
+    backgroundColor: '#99ccff',
     elevation: 5,
-    borderColor:'#0066cc'
-    
+    borderColor: '#0066cc',
   },
   selectedSizeText: {
     color: 'white', // Text color change for selected size
