@@ -114,15 +114,16 @@ const HomeScreen = () => {
           <TextInput
             style={styles.searchInput}
             placeholder="Search items..."
+            placeholderTextColor={"white"}
             value={searchText}
             onChangeText={setSearchText}
           />
           <TouchableOpacity onPress={toggleModal} style={styles.filterIcon}>
-            <Icon name="filter" size={20} color="#888" />
+            <Icon name="filter" size={20} color="white" />
           </TouchableOpacity>
         </View>
         <View style={styles.newCollectionContainer}>
-          <Text style={styles.newCollectionText}>New Collection</Text>
+          <Text style={styles.newCollectionText}>𝐍𝐞𝐰 𝐂𝐨𝐥𝐥𝐞𝐜𝐭𝐢𝐨𝐧 </Text>
         </View>
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -184,7 +185,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   wlimageContainer: {
-    height: 250,
+    height: 270,
     width: '100%',
     backgroundColor: 'lightgray',
   },
@@ -193,36 +194,46 @@ const styles = StyleSheet.create({
     width: null,
     height: null,
     resizeMode:'stretch',
+    opacity:0.9,
   },
   
   searchContainer: {
+    position:'absolute',
+    bottom:59,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 2,
-    borderColor: '#888',
+    borderColor: 'white',
     borderRadius: 10,
     margin:15,
     padding: 5,
+    opacity:1,
   },
   searchIcon: {
     marginRight: 10,
+    color:'white',
   },
   searchInput: {
     flex: 1,
     height: 40,
+    color:'white',
   },
   filterIcon: {
     marginLeft: 10,
+    color:'white',
   },
   newCollectionContainer:{
+      position:'relative',
       alignItems:'flex-start',
       marginLeft:18,
+      marginTop:20,
   },
   newCollectionText:{
     fontSize:30,
     fontWeight:'bold',
     color:"#0D47A1",
     fontStyle:"italic",
+    
   },
   imageContainer: {
     flexDirection: 'row',
