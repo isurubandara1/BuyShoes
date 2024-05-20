@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import { CartContext } from './CartContext'; // Adjust the path as needed
 
 const LargePage = () => {
   const route = useRoute();
+  const navigation = useNavigation();
   const { product } = route.params;
+  const { addToCart } = useContext(CartContext);
 
   const [itemCount, setItemCount] = useState(1);
-  const [selectedSize, setSelectedSize] = useState('M'); // Default size
+  const [selectedSize, setSelectedSize] = useState('M');
   const itemPrice = parseInt(product.price.replace('$', ''));
   const totalPrice = itemPrice * itemCount;
 
@@ -24,6 +27,18 @@ const LargePage = () => {
 
   const selectSize = (size) => {
     setSelectedSize(size);
+  };
+
+  const handleAddToCart = () => {
+    const item = {
+      image: product.image,
+      description: product.description,
+      price: itemPrice,
+      size: selectedSize,
+      count: itemCount,
+      total: totalPrice,
+    };
+    addToCart(item);
   };
 
   return (
@@ -82,10 +97,10 @@ const LargePage = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={styles.addButton}>
+          <TouchableOpacity style={styles.addButton} onPress={handleAddToCart}>
             <Text style={styles.buttonText}>Add to Cart</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buyButton}>
+          <TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('CartScreen')}>
             <Text style={[styles.buttonText, { color: 'white' }]}>Buy Now</Text>
           </TouchableOpacity>
         </View>
@@ -173,7 +188,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    
   },
   addButton: {
     backgroundColor: '#003171',
@@ -188,7 +202,6 @@ const styles = StyleSheet.create({
     borderRadius:12,
     width: '45%',
     alignItems: 'center',
-
   },
   buttonText: {
     color: 'white',
