@@ -103,6 +103,9 @@ const styles = StyleSheet.create({
   imageContainer: {
     alignItems: 'center',
     marginBottom: 20,
+    backgroundColor:'#22A7F0',
+    height:"40%",
+    borderRadius:40,
   },
   image: {
     width: 200,
@@ -128,7 +131,7 @@ const styles = StyleSheet.create({
   },
   sizeButton: {
     marginRight: 10,
-    borderWidth: 3,
+    borderWidth: 2,
     paddingVertical: 12,
     paddingHorizontal: 12,
     borderRadius: 10,
@@ -139,9 +142,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   selectedSizeButton: {
-    backgroundColor: '#0040ff',
+    backgroundColor: '#90CAF9',
     elevation: 5,
-    borderColor: '#002699',
+    borderColor: '#22A7F0',
   },
   selectedSizeText: {
     color: 'white', // Text color change for selected size
@@ -170,24 +173,27 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
+    
   },
   addButton: {
-    backgroundColor: '#0040ff',
+    backgroundColor: '#003171',
     padding: 15,
-    borderRadius: 5,
     width: '45%',
     alignItems: 'center',
+    borderRadius:12,
   },
   buyButton: {
-    backgroundColor: '#002699',
+    backgroundColor: '#22A7F0',
     padding: 15,
-    borderRadius: 5,
+    borderRadius:12,
     width: '45%',
     alignItems: 'center',
+
   },
   buttonText: {
     color: 'white',
     fontWeight: 'bold',
+    fontSize:17,
   },
 });
 
