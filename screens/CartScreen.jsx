@@ -1,16 +1,21 @@
 import React, { useContext } from 'react';
-import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 import { CartContext } from './CartContext'; // Adjust the path as needed
+import { Ionicons } from '@expo/vector-icons'; // Import Ionicons from Expo
 
 const CartScreen = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, removeFromCart } = useContext(CartContext);
+
+  const handleRemoveItem = (index) => {
+    removeFromCart(index);
+  };
 
   return (
     <View style={styles.container}>
       <FlatList
         data={cartItems}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View style={styles.itemContainer}>
             <Image source={item.image} style={styles.image} />
             <View style={styles.details}>
@@ -20,6 +25,10 @@ const CartScreen = () => {
               <Text style={styles.count}>Quantity: {item.count}</Text>
               <Text style={styles.total}>Total: ${item.total}</Text>
             </View>
+            {/* Add remove icon/button */}
+            <TouchableOpacity onPress={() => handleRemoveItem(index)} style={styles.removeButton}>
+              <Ionicons name="trash-bin-outline" size={24} color="red" />
+            </TouchableOpacity>
           </View>
         )}
       />
@@ -69,6 +78,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 5,
     fontWeight: 'bold',
+  },
+  removeButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
   },
 });
 

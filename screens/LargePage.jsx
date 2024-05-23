@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity, ToastAndroid } from 'react-native'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRoute, useNavigation } from '@react-navigation/native';
-import { CartContext } from './CartContext'; // Adjust the path as needed
+import { CartContext } from './CartContext'; 
+
 
 const LargePage = () => {
   const route = useRoute();
@@ -39,6 +40,7 @@ const LargePage = () => {
       total: totalPrice,
     };
     addToCart(item);
+    ToastAndroid.show('Your item has been added successfully!', ToastAndroid.SHORT);
   };
 
   return (
