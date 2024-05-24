@@ -16,7 +16,6 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (item) => {
     setCartItems([...cartItems, item]);
-    ToastAndroid.show('Your item has been added to the cart!', ToastAndroid.SHORT);
   };
 
   const removeFromCart = (index) => {
