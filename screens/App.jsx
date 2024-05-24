@@ -11,6 +11,7 @@ import LargePage from './LargePage';
 import { NavigationContainer } from '@react-navigation/native';
 import { CartProvider } from './CartContext';
 import { useNavigation } from '@react-navigation/native';
+import CartIconWithBadge from './CartIconWithBadge';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,10 @@ function App() {
                 iconName = focused ? 'person' : 'person-outline';
               }
 
+              if (route.name === 'Cart') {
+                return <CartIconWithBadge name={iconName} size={size} color={color} />;
+              }
+
               return <Ionicons name={iconName} size={size} color={color} />;
             },
           })}
@@ -47,7 +52,7 @@ function App() {
           <Tab.Screen
             name="Home"
             component={HomeScreen}
-            initialParams={{ favorites, setFavorites, navigateToFavorites }}
+            initialParams={{ favorites, setFavorites }}
             options={{ headerShown: false }}
           />
           <Tab.Screen
