@@ -52,10 +52,11 @@ const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     marginBottom: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#90CAF9',
     padding: 10,
     borderRadius: 10,
-    elevation: 2,
+    elevation: 5,
+    
   },
   image: {
     width: 100,
@@ -94,8 +95,8 @@ const styles = StyleSheet.create({
   },
   totalContainer: {
     padding: 20,
-    borderTopWidth: 1,
-    borderColor: '#ccc',
+    borderTopWidth: 5,
+    borderColor: 'black',
     alignItems: 'center',
   },
   totalText: {
