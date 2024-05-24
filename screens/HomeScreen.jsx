@@ -110,10 +110,25 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.wlimageContainer}>
-        <Image source={require('../assets/images/wal.jpg')} style={styles.wlimage} />
+        <Image source={require('../assets/images/wal.png')} style={styles.wlimage} />
       </View>
       <View style={styles.fixedContent}>
+      <View style={styles.searchContainer}>
+          
+          <Icon name="search" size={20} color="#888" style={styles.searchIcon} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search items..."
+            placeholderTextColor={"white"}
+            value={searchText}
+            onChangeText={setSearchText}
+          />
+          <TouchableOpacity onPress={toggleModal} style={styles.filterIcon}>
+            <Icon name="filter" size={20} color="white" />
+          </TouchableOpacity>
+        </View>
         <View style={styles.searchContainer}>
+          
           <Icon name="search" size={20} color="#888" style={styles.searchIcon} />
           <TextInput
             style={styles.searchInput}
@@ -198,7 +213,7 @@ const styles = StyleSheet.create({
     width: null,
     height: null,
     resizeMode: 'stretch',
-    opacity: 0.9,
+    opacity: 1,
   },
 
   searchContainer: {
@@ -206,8 +221,8 @@ const styles = StyleSheet.create({
     bottom: 59,
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 2,
-    borderColor: 'white',
+    borderWidth: 3,
+    borderColor: '#003171',
     borderRadius: 10,
     margin: 15,
     padding: 5,

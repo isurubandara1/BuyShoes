@@ -10,6 +10,10 @@ const CartScreen = () => {
     removeFromCart(index);
   };
 
+  const calculateTotalPrice = () => {
+    return cartItems.reduce((total, item) => total + item.total, 0);
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -32,6 +36,9 @@ const CartScreen = () => {
           </View>
         )}
       />
+      <View style={styles.totalContainer}>
+        <Text style={styles.totalText}>Total Price: ${calculateTotalPrice()}</Text>
+      </View>
     </View>
   );
 };
@@ -40,6 +47,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    backgroundColor:'white',
   },
   itemContainer: {
     flexDirection: 'row',
@@ -83,6 +91,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: 10,
+  },
+  totalContainer: {
+    padding: 20,
+    borderTopWidth: 1,
+    borderColor: '#ccc',
+    alignItems: 'center',
+  },
+  totalText: {
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
