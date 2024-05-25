@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -5,25 +6,49 @@ import {
   Image,
   Dimensions,
   TouchableOpacity,
+  Animated,
 } from "react-native";
-import React from "react";
 
 const { width, height } = Dimensions.get("window");
 
 const FirstPage = () => {
+  const fadeAnim = new Animated.Value(0);
+  const translateYAnim = new Animated.Value(50);
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+
+    Animated.timing(translateYAnim, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Image
         source={require("../assets/images/FirstPage.jpg")}
         style={styles.image}
-        resizeMode='stretch'
+        resizeMode="stretch"
       />
       <View style={styles.overlay}>
-        <Text style={styles.title}>
-          Welcome to your one-stop destination for shoe bliss. Dive into a
-          style meets comfort step.
-        </Text>
-        <Text style={styles.subtitle}>Let's start shopping!</Text>
+        <Animated.View
+          style={[
+            styles.animatedContainer,
+            { opacity: fadeAnim, transform: [{ translateY: translateYAnim }] },
+          ]}
+        >
+          <Text style={styles.title}>
+            Welcome to your one-stop destination for shoe bliss. Dive into a
+            style meets comfort step.
+          </Text>
+          <Text style={styles.subtitle}>Let's start shopping!</Text>
+        </Animated.View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Sign Up</Text>
@@ -51,25 +76,29 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: "rgba(0, 0, 0, 0.7)", // Semi-transparent black overlay
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
     justifyContent: "flex-end",
     alignItems: "center",
     paddingBottom: 20,
+  },
+  animatedContainer: {
+    alignItems: "center",
+    marginBottom: 20,
   },
   title: {
     fontSize: 23,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 20,
-    color: "#fff", 
-    paddingLeft:2,
-    paddingRight:2,
+    color: "#fff",
+    paddingLeft: 2,
+    paddingRight: 2,
   },
   subtitle: {
     fontSize: 19,
     textAlign: "center",
     marginBottom: 20,
-    color: "#fff", 
+    color: "#fff",
   },
   buttonContainer: {
     flexDirection: "column",
