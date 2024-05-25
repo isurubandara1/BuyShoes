@@ -1,23 +1,29 @@
-import { StyleSheet, Text, View, Image, Dimensions, TouchableOpacity } from 'react-native';
-import React from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
+import React from "react";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 const FirstPage = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../assets/images/FirstPage.png')}
+        source={require("../assets/images/FirstPage.jpg")}
         style={styles.image}
-        resizeMode="cover"
+        resizeMode='stretch'
       />
       <View style={styles.overlay}>
         <Text style={styles.title}>
-          Welcome to your one-stop destination for shoe bliss.
+          Welcome to your one-stop destination for shoe bliss. Dive into a world
+          style meets comfort every step.
         </Text>
-        <Text style={styles.subtitle}>
-          Let's start shopping!
-        </Text>
+        <Text style={styles.subtitle}>Let's start shopping!</Text>
         <View style={styles.buttonContainer}>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Sign Up</Text>
@@ -32,7 +38,7 @@ const FirstPage = () => {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -45,37 +51,41 @@ const styles = StyleSheet.create({
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)', // Semi-transparent black overlay
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "rgba(0, 0, 0, 0.7)", // Semi-transparent black overlay
+    justifyContent: "flex-end",
+    alignItems: "center",
+    paddingBottom: 30,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 20,
-    color: '#fff', // White text color
+    color: "#fff", // White text color
   },
   subtitle: {
-    fontSize: 18,
-    textAlign: 'center',
+    fontSize: 19,
+    textAlign: "center",
     marginBottom: 20,
-    color: '#fff', // White text color
+    color: "#fff", // White text color
   },
   buttonContainer: {
-    flexDirection: 'column',
-    alignItems: 'center',
+    flexDirection: "column",
+    alignItems: "center",
   },
   button: {
-    backgroundColor: '#07A8DA',
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    borderRadius: 6,
+    backgroundColor: "#07A8DA",
+    borderRadius: 10,
     marginBottom: 10,
+    width: width - 25,
+    height: 50,
+    justifyContent: "center",
   },
   buttonText: {
-    fontSize: 16,
-    color: '#fff', // White text color
+    fontSize: 18,
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "bold",
   },
 });
 
