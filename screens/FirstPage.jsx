@@ -20,8 +20,8 @@ const FirstPage = () => {
       />
       <View style={styles.overlay}>
         <Text style={styles.title}>
-          Welcome to your one-stop destination for shoe bliss. Dive into a world
-          style meets comfort every step.
+          Welcome to your one-stop destination for shoe bliss. Dive into a
+          style meets comfort step.
         </Text>
         <Text style={styles.subtitle}>Let's start shopping!</Text>
         <View style={styles.buttonContainer}>
@@ -54,27 +54,29 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.7)", // Semi-transparent black overlay
     justifyContent: "flex-end",
     alignItems: "center",
-    paddingBottom: 30,
+    paddingBottom: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 23,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 20,
-    color: "#fff", // White text color
+    color: "#fff", 
+    paddingLeft:2,
+    paddingRight:2,
   },
   subtitle: {
     fontSize: 19,
     textAlign: "center",
     marginBottom: 20,
-    color: "#fff", // White text color
+    color: "#fff", 
   },
   buttonContainer: {
     flexDirection: "column",
     alignItems: "center",
   },
   button: {
-    backgroundColor: "#07A8DA",
+    backgroundColor: "#0B95BE",
     borderRadius: 10,
     marginBottom: 10,
     width: width - 25,
