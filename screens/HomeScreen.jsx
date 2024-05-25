@@ -110,10 +110,10 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.wlimageContainer}>
-        <Image source={require('../assets/images/wal.png')} style={styles.wlimage} />
+        <Image source={require('../assets/images/wal.jpg')} style={styles.wlimage} />
       </View>
       <View style={styles.fixedContent}>
-      <View style={styles.searchContainer}>
+        <View style={styles.searchContainer}>
           
           <Icon name="search" size={20} color="#888" style={styles.searchIcon} />
           <TextInput
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     width: null,
     height: null,
     resizeMode: 'stretch',
-    opacity: 1,
+    opacity: 0.8,
   },
 
   searchContainer: {
@@ -222,7 +222,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 3,
-    borderColor: '#003171',
+    borderColor: 'white',
     borderRadius: 10,
     margin: 15,
     padding: 5,
