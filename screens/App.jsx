@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import CartIconWithBadge from './CartIconWithBadge';
 import FirstPage from './FirstPage';
 import Login from './Login';
+import Signup from './Signup';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
@@ -65,10 +66,11 @@ function MainTabs() {
 
 function App() {
   return (
-        <Stack.Navigator initialRouteName="Login"> 
+        <Stack.Navigator initialRouteName="Signup"> 
           <Stack.Screen name="FirstPage" component={FirstPage} options={{ headerShown: false }} />
           <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} /> 
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+          <Stack.Screen name="Signup" component={Signup} options={{ headerShown: false }} />
         </Stack.Navigator>
   );
 }
