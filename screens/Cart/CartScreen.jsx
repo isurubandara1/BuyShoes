@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
-import { CartContext } from './Cart/CartContext'; // Adjust the path as needed
-import { Ionicons } from '@expo/vector-icons'; // Import Ionicons from Expo
+import { CartContext } from './CartContext';
+import { Ionicons } from '@expo/vector-icons';
 
 const CartScreen = () => {
   const { cartItems, removeFromCart } = useContext(CartContext);

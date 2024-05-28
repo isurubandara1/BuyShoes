@@ -1,4 +1,3 @@
-// CartContext.js
 import React, { createContext, useState, useEffect } from 'react';
 import { ToastAndroid } from 'react-native';
 

@@ -8,12 +8,14 @@ import {
   TouchableOpacity,
   Animated,
 } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get("window");
 
 const FirstPage = () => {
   const fadeAnim = new Animated.Value(0);
   const translateYAnim = new Animated.Value(50);
+  const navigation = useNavigation();
 
   useEffect(() => {
     Animated.timing(fadeAnim, {
@@ -50,13 +52,14 @@ const FirstPage = () => {
           <Text style={styles.subtitle}>Let's start shopping!</Text>
         </Animated.View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Signup')}>
             <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={[styles.button, styles.googlebutton]}>
+            <Image  style={styles.googleImage} source={require("../assets/images/Google.png")}/>
             <Text style={styles.buttonText}>Continue with Google</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
         </View>
@@ -108,9 +111,19 @@ const styles = StyleSheet.create({
     backgroundColor: "#0B95BE",
     borderRadius: 10,
     marginBottom: 10,
-    width: width - 25,
+    width: width - 30,
     height: 50,
     justifyContent: "center",
+  },
+  googlebutton:{
+    flexDirection:"row",
+     alignItems:'center', 
+  },
+  googleImage:{
+    resizeMode:'cover',
+    width:35,
+    height:35,
+    marginRight:15,
   },
   buttonText: {
     fontSize: 18,

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+import { Ionicons } from '@expo/vector-icons';
+
 const { width } = Dimensions.get('window');
 
 const SignUp = () => {
@@ -19,6 +21,9 @@ const SignUp = () => {
 
   return (
     <View style={styles.container}>
+       <TouchableOpacity style={styles.arrow} onPress={() => navigation.navigate('FirstPage')}>
+          <Ionicons name="arrow-back" size={24} color="white" />
+        </TouchableOpacity>
       <Text style={styles.title}>Sign Up</Text>
       <TextInput
         style={styles.input}
@@ -66,6 +71,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     backgroundColor: '#fff',
+  },
+  arrow: {
+    position:'absolute',
+    top: 50,
+    left: 30,
+    zIndex: 1,
+    borderColor:'#0B95BE',
+    borderWidth:3,
+    borderRadius:50,
+    backgroundColor:'#0B95BE',
+    width:50,
+    height:50,
+    alignItems:'center',
+    justifyContent:'center',
   },
   title: {
     fontSize: 32,

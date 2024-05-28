@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { CartContext } from './Cart/CartContext'; // Adjust the path as needed
+import { CartContext } from './CartContext'; // Adjust the path as needed
 
 const CartIconWithBadge = ({ name, color, size }) => {
   const { cartItemCount } = useContext(CartContext);
