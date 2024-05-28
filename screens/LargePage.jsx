@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity, ToastAndroid } from 'react-native'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRoute, useNavigation } from '@react-navigation/native';
-import { CartContext } from './CartContext'; 
+import { CartContext } from './Cart/CartContext'; 
 
 
 const LargePage = () => {

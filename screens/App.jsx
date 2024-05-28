@@ -6,12 +6,12 @@ import FavoritesScreen from './FavoritesScreen';
 import CartScreen from './CartScreen';
 import ProfileScreen from './ProfileScreen';
 import LargePage from './LargePage';
-import { CartProvider } from './CartContext';
+import { CartProvider } from './Cart/CartContext';
 import { useNavigation } from '@react-navigation/native';
 import CartIconWithBadge from './CartIconWithBadge';
 import FirstPage from './FirstPage'; 
-import Login from './Login';
-import Signup from './Signup';
+import Login from './Auth/Login';
+import Signup from './Auth/Signup';
 import { createStackNavigator } from '@react-navigation/stack';
 
 
