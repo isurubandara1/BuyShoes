@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TextInput, TouchableOpacity, Modal, Pressable } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import the icon from the library
-import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
+import Icon from 'react-native-vector-icons/FontAwesome'; 
+import { useNavigation } from '@react-navigation/native'; 
 
 const products = [
   {
