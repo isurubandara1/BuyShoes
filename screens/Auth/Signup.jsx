@@ -12,10 +12,10 @@ const SignUp = () => {
   const navigation = useNavigation();
 
   const handleSignUp = () => {
-    // Handle sign-up logic here
     console.log('Name:', name);
     console.log('Email:', email);
-    console.log('Password:', password);
+    console.log('Password:', password); 
+    navigation.navigate('MainTabs');
   };
 
   return (

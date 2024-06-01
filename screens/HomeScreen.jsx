@@ -8,53 +8,36 @@ const products = [
   {
     id: 1,
     image: require('../assets/images/adidas/a1.png'),
-    description: 'White and black leather adidas',
-    price: '50$'
+    description: 'Nike Air Max 270, Black and White',
+    price: '150$'
   },
   {
     id: 2,
     image: require('../assets/images/adidas/a4.png'),
-    description: 'Long and black farther adidas',
-    price: '60$'
+    description: 'Adidas Ultraboost 21, White and Black',
+    price: '180$'
   },
   {
     id: 3,
     image: require('../assets/images/adidas/a1.png'),
-    description: 'White and black leather adidas',
-    price: '120$'
+    description: 'Puma RS-X3, Multi-Color',
+    price: '110$'
   },
   {
     id: 4,
     image: require('../assets/images/adidas/a1.png'),
-    description: 'White and black leather adidas',
-    price: '10$'
+    description: 'Reebok Classic Leather, White',
+    price: '90$'
   },
   {
     id: 5,
     image: require('../assets/images/adidas/a1.png'),
-    description: 'White and black leather adidas',
-    price: '200$'
-  },
-  {
-    id: 6,
-    image: require('../assets/images/adidas/a1.png'),
-    description: 'White zz black leather adidas',
-    price: '1050$'
-  },
-  {
-    id: 7,
-    image: require('../assets/images/adidas/a1.png'),
-    description: 'White and plo leather adidas',
-    price: '2000$'
-  },
-  {
-    id: 8,
-    image: require('../assets/images/adidas/a1.png'),
-    description: 'White and black leather adidas',
-    price: '130$'
+    description: 'Converse Chuck Taylor All Star, Black',
+    price: '60$'
   },
   // Add more products as needed
 ];
+
 
 const HomeScreen = () => {
   const [searchText, setSearchText] = useState('');

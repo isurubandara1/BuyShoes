@@ -56,6 +56,7 @@ function MainTabs() {
         name="Favorites"
         component={FavoritesScreen}
         initialParams={{ favorites: [], products: [] }}
+        options={{ headerShown: false }}
       />
       <Tab.Screen name="Cart" component={CartScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
@@ -72,6 +73,8 @@ function App() {
           <Stack.Screen name="FirstPage" component={FirstPage} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Signup" component={Signup} options={{ headerShown: false }} />
+          <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
         </Stack.Navigator>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Ionicons } from '@expo/vector-icons';
 
 const FavoritesScreen = ({ route, removeFromFavorites }) => {
   const { favorites, products } = route.params; // Receive favorites and products from navigation parameters
@@ -12,7 +13,13 @@ const FavoritesScreen = ({ route, removeFromFavorites }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Favorites</Text>
+      <View style={styles.arrocontainer}>
+      <TouchableOpacity style={styles.arrow} onPress={() => navigation.navigate('HomeScreen')}>
+          <Ionicons name="arrow-back" size={24} color="white" />
+        </TouchableOpacity>
+      <View style={styles.titleContainer}><Text style={styles.title}>Favorites</Text></View>
+      </View>
+      
       <ScrollView contentContainerStyle={styles.scrollView}>
         {favorites.length > 0 ? (
           favorites.map((productId, index) => {
@@ -50,10 +57,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingTop: 20,
   },
+  titleContainer:{
+    marginTop:8,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 30,
   },
   scrollView: {
     paddingBottom: 20,
@@ -72,6 +82,21 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: '#90CAF9',
     borderRadius: 10,
+  },
+  arrocontainer:{
+    flexDirection:'row',
+    
+  },
+  arrow: {
+    borderColor:'#0B95BE',
+    borderWidth:3,
+    borderRadius:50,
+    backgroundColor:'#0B95BE',
+    width:50,
+    height:50,
+    alignItems:'center',
+    justifyContent:'center',
+    marginRight:30,
   },
   image: {
     width: '100%',
