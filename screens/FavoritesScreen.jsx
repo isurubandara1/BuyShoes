@@ -2,8 +2,10 @@ import React from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'; 
 
 const FavoritesScreen = ({ route, removeFromFavorites }) => {
+  const navigation = useNavigation(); // Initialize useNavigation hook
   const { favorites, products } = route.params; // Receive favorites and products from navigation parameters
 
   const handleRemoveFavorite = (productId) => {
@@ -14,10 +16,15 @@ const FavoritesScreen = ({ route, removeFromFavorites }) => {
   return (
     <View style={styles.container}>
       <View style={styles.arrocontainer}>
-      <TouchableOpacity style={styles.arrow} onPress={() => navigation.navigate('HomeScreen')}>
+      <TouchableOpacity
+          style={styles.arrow}
+          onPress={() => navigation.goBack()}
+        >
           <Ionicons name="arrow-back" size={24} color="white" />
         </TouchableOpacity>
-      <View style={styles.titleContainer}><Text style={styles.title}>Favorites</Text></View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Favorites</Text>
+        </View>
       </View>
       
       <ScrollView contentContainerStyle={styles.scrollView}>
@@ -85,7 +92,6 @@ const styles = StyleSheet.create({
   },
   arrocontainer:{
     flexDirection:'row',
-    
   },
   arrow: {
     borderColor:'#0B95BE',

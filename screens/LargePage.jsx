@@ -40,7 +40,7 @@ const LargePage = () => {
       total: totalPrice,
     };
     addToCart(item);
-    ToastAndroid.show('Your item has been added successfully!', ToastAndroid.SHORT);
+    //ToastAndroid.show('Your item has been added successfully!', ToastAndroid.SHORT);
   };
 
   return (
