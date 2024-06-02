@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, FlatList, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native'; 
 
 const SubmitForm = ({ route }) => {
   const [fullName, setFullName] = useState('');
@@ -7,7 +9,7 @@ const SubmitForm = ({ route }) => {
   const [town, setTown] = useState('');
   const [telephoneNumber, setTelephoneNumber] = useState('');
   const { cartItems } = route.params;
-
+  const navigation = useNavigation(); 
   const handleSubmit = () => {
     // Handle form submission here
     console.log('Form submitted!');
@@ -36,7 +38,17 @@ const SubmitForm = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Selected Cart Items</Text>
+      <View style={styles.arrocontainer}>
+      <TouchableOpacity
+          style={styles.arrow}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="arrow-back" size={24} color="white" />
+        </TouchableOpacity>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Your Order Shoes</Text>
+        </View>
+      </View>
       <FlatList
         data={cartItems}
         keyExtractor={(item, index) => index.toString()}
@@ -88,12 +100,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#fff',
+    backgroundColor: 'black',
+  },
+  arrocontainer:{
+    flexDirection:'row',
+    marginTop:20
+  },
+  arrow: {
+    borderColor:'#0B95BE',
+    borderWidth:3,
+    borderRadius:50,
+    backgroundColor:'#0B95BE',
+    width:50,
+    height:50,
+    alignItems:'center',
+    justifyContent:'center',
+    marginRight:25,
+  },
+  titleContainer:{
+    marginTop:8,
   },
   title: {
-    fontSize: 24,
+    fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 20,
+    color:'white',
   },
   itemContainer: {
     flexDirection: 'row',
@@ -101,7 +132,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: '#ccc',
     paddingBottom: 10,
-    backgroundColor: '#90CAF9',
+    backgroundColor: '#fff',
     borderRadius: 10,
     padding: 10,
   },
@@ -132,24 +163,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   totalText: {
-    fontSize: 18,
+    fontSize: 23,
     fontWeight: 'bold',
     marginTop: 5,
     marginBottom: 10,
+    color:'white',
+    textAlign:'center'
   },
   label: {
     fontSize: 16,
     marginBottom: 5,
+    color:'white',
   },
   input: {
     height: 40,
-    borderColor: 'gray',
+    borderColor: 'white',
     borderWidth: 1,
     marginBottom: 15,
     paddingHorizontal: 10,
+    backgroundColor:'white'
   },
   button: {
-    backgroundColor: 'blue',
+    backgroundColor: '#0B95BE',
     padding: 10,
     borderRadius: 5,
     alignItems: 'center',
