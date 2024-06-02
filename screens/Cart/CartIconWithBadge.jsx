@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: -8,
     top: -12,
-    backgroundColor: 'red',
+    backgroundColor: '#0B95BE',
     borderRadius: 6,
     width: 20,
     height: 20,

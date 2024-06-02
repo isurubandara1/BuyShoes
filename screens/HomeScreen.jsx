@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     backgroundColor:'black',
   },
   wlimageContainer: {
-    height: 200,
+    height: 220,
     width: '100%',
     backgroundColor: 'lightgray',
   },

@@ -24,6 +24,49 @@ const CartScreen = () => {
     return cartItems.reduce((total, item) => total + item.total, 0);
   };
 
+  const renderItem = ({ item, index }) => (
+    <View style={styles.itemContainer}>
+      <Image source={item.image} style={styles.image} />
+      <View style={styles.details}>
+        <Text style={styles.description}>{item.description}</Text>
+        <Text style={styles.price}>${item.price}</Text>
+        <Text style={styles.size}>Size: {item.size}</Text>
+        <Text style={styles.count}>Quantity: {item.count}</Text>
+        <Text style={styles.total}>Total: ${item.total}</Text>
+      </View>
+      <TouchableOpacity
+        onPress={() => handleRemoveItem(index)}
+        style={styles.removeButton}
+      >
+        <Ionicons name="trash-bin-outline" size={24} color="red" />
+      </TouchableOpacity>
+    </View>
+  );
+
+  if (cartItems.length === 0) {
+    return (
+      <View style={styles.container}>
+        <View style={styles.arrocontainer}>
+        <TouchableOpacity
+          style={styles.arrow}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="arrow-back" size={24} color="white" />
+        </TouchableOpacity>
+
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>My Cart</Text>
+        </View>
+      </View>
+      <View style={styles.emptyContainer}>
+      <Text style={styles.emptyCartText}>Add items to your cart firstly</Text>
+      <Image  style={styles.emptyCartImage} source={require('../../assets/images/cart.png')} />
+      </View>
+       
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.arrocontainer}>
@@ -35,41 +78,29 @@ const CartScreen = () => {
         </TouchableOpacity>
 
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>Cart</Text>
+          <Text style={styles.title}> My Cart</Text>
         </View>
       </View>
       <FlatList
         data={cartItems}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item, index }) => (
-          <View style={styles.itemContainer}>
-            <Image source={item.image} style={styles.image} />
-            <View style={styles.details}>
-              <Text style={styles.description}>{item.description}</Text>
-              <Text style={styles.price}>${item.price}</Text>
-              <Text style={styles.size}>Size: {item.size}</Text>
-              <Text style={styles.count}>Quantity: {item.count}</Text>
-              <Text style={styles.total}>Total: ${item.total}</Text>
-            </View>
-            {/* Add remove icon/button */}
-            <TouchableOpacity
-              onPress={() => handleRemoveItem(index)}
-              style={styles.removeButton}
-            >
-              <Ionicons name="trash-bin-outline" size={24} color="red" />
-            </TouchableOpacity>
-          </View>
-        )}
+        renderItem={renderItem}
       />
       <View style={styles.totalContainer}>
         <Text style={styles.totalText}>
           Total Price: ${calculateTotalPrice()}
         </Text>
       </View>
-     <View style={styles.buyButtonContainer}><TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('SubmitForm', { cartItems: cartItems })} >
-            <Text style={styles.buttonText}>Buy Now</Text>
-       </TouchableOpacity>
-      </View> 
+      <View style={styles.buyButtonContainer}>
+        <TouchableOpacity
+          style={styles.buyButton}
+          onPress={() =>
+            navigation.navigate("SubmitForm", { cartItems: cartItems })
+          }
+        >
+          <Text style={styles.buttonText}>Buy Now</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -102,7 +133,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 30,
-    color:'white'
+    color: "white",
   },
   itemContainer: {
     flexDirection: "row",
@@ -156,22 +187,36 @@ const styles = StyleSheet.create({
   totalText: {
     fontSize: 20,
     fontWeight: "bold",
-    color:'white',
+    color: "white",
   },
-  buyButtonContainer:{
-    alignItems:'center',
+  buyButtonContainer: {
+    alignItems: "center",
   },
   buyButton: {
-    backgroundColor: '#22A7F0',
+    backgroundColor: "#22A7F0",
     padding: 15,
-    borderRadius:12,
-    width: '45%',
-    alignItems: 'center',
+    borderRadius: 12,
+    width: "45%",
+    alignItems: "center",
   },
   buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize:17,
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 17,
+  },
+  emptyContainer:{
+    justifyContent:'center',
+    alignItems:'center',
+  },
+  emptyCartText: {
+    fontSize: 20,
+    color: "white",
+    textAlign: "center",
+  },
+  emptyCartImage:{
+    width:'60%',
+    height:'40%',
+    resizeMode:'contain',
   },
 });
 

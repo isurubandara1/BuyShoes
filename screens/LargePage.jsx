@@ -5,8 +5,6 @@ import { useRoute, useNavigation } from '@react-navigation/native';
 import { CartContext } from './Cart/CartContext'; 
 import { Ionicons } from '@expo/vector-icons';
 
-
-
 const LargePage = () => {
   const route = useRoute();
   const navigation = useNavigation();
@@ -43,6 +41,18 @@ const LargePage = () => {
     };
     addToCart(item);
     //ToastAndroid.show('Your item has been added successfully!', ToastAndroid.SHORT);
+  };
+
+  const handleBuyNow = () => {
+    const item = {
+      image: product.image,
+      description: product.description,
+      price: itemPrice,
+      size: selectedSize,
+      count: itemCount,
+      total: totalPrice,
+    };
+    navigation.navigate('SubmitForm', { directPurchaseItem: item });
   };
 
   return (
@@ -107,9 +117,7 @@ const LargePage = () => {
           <TouchableOpacity style={styles.addButton} onPress={handleAddToCart}>
             <Text style={styles.buttonText}>Add to Cart</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('CartScreen')}>
-            <Text style={[styles.buttonText, { color: 'white' }]}>Buy Now</Text>
-          </TouchableOpacity>
+          
         </View>
       </View>
     </SafeAreaView>
@@ -158,7 +166,8 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 25,
     marginBottom: 20,
-    fontWeight: 'bold',
+    fontWeight
+    : 'bold',
     color:'white',
   },
   sizeContainer: {
@@ -208,26 +217,20 @@ const styles = StyleSheet.create({
   itemCount: {
     marginHorizontal: 10,
     fontSize: 16,
-   color:'white',
+    color:'white',
   },
   buttonsContainer: {
+    marginTop:10,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     width: '100%',
   },
   addButton: {
-    backgroundColor: '#003171',
-    padding: 15,
-    width: '45%',
-    alignItems: 'center',
-    borderRadius:12,
-  },
-  buyButton: {
     backgroundColor: '#22A7F0',
-    padding: 15,
-    borderRadius:12,
+    padding: 20,
     width: '45%',
     alignItems: 'center',
+    borderRadius:12,
   },
   buttonText: {
     color: 'white',
