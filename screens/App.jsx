@@ -57,7 +57,7 @@ function MainTabs() {
         />
         <Tab.Screen name="Cart" component={CartScreen} options={{ headerShown: false }} />
         <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
-        <Tab.Screen name="LargePage" component={LargePage} options={{ tabBarButton: () => null }} />
+        <Tab.Screen name="LargePage" component={LargePage} options={{ tabBarButton: () => null,headerShown: false } } />
       </Tab.Navigator>
     </CartProvider>
   );

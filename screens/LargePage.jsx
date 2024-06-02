@@ -3,6 +3,8 @@ import { StyleSheet, View, Image, Text, TouchableOpacity, ToastAndroid } from 'r
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { CartContext } from './Cart/CartContext'; 
+import { Ionicons } from '@expo/vector-icons';
+
 
 
 const LargePage = () => {
@@ -45,6 +47,9 @@ const LargePage = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+       <TouchableOpacity style={styles.arrow} onPress={() => navigation.goBack()}>
+          <Ionicons name="arrow-back" size={24} color="white" />
+        </TouchableOpacity>
       <View style={styles.imageContainer}>
         <Image source={product.image} style={styles.image} />
       </View>
@@ -114,18 +119,30 @@ const LargePage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ABCDF0',
-    padding: 20,
+    padding: 10,
+    backgroundColor:'black',
+  },
+  arrow: {
+    position:'absolute',
+    top: 50,
+    left: 30,
+    zIndex: 1,
+    borderColor:'#0B95BE',
+    borderWidth:3,
+    borderRadius:50,
+    backgroundColor:'#0B95BE',
+    width:50,
+    height:50,
+    alignItems:'center',
+    justifyContent:'center',
   },
   imageContainer: {
     alignItems: 'center',
-    marginBottom: 20,
-    backgroundColor:'#22A7F0',
     height:"40%",
-    borderRadius:40,
+    marginTop:30,
   },
   image: {
-    width: 200,
+    width: "100%",
     height: 200,
     resizeMode: 'contain',
   },
@@ -136,11 +153,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
+    color:'white',
   },
   price: {
     fontSize: 25,
     marginBottom: 20,
     fontWeight: 'bold',
+    color:'white',
   },
   sizeContainer: {
     flexDirection: 'row',
@@ -157,6 +176,7 @@ const styles = StyleSheet.create({
   sizeText: {
     fontSize: 16,
     fontWeight: 'bold',
+    color:'white',
   },
   selectedSizeButton: {
     backgroundColor: '#90CAF9',
@@ -178,13 +198,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 5,
+    borderColor:'white',
+    borderWidth:1,
   },
   counterButtonText: {
     fontSize: 20,
+    color:'white',
   },
   itemCount: {
     marginHorizontal: 10,
     fontSize: 16,
+   color:'white',
   },
   buttonsContainer: {
     flexDirection: 'row',

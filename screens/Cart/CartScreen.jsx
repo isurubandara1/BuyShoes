@@ -74,10 +74,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "white",
+    backgroundColor: "black",
   },
   arrocontainer: {
     flexDirection: "row",
+    marginTop: 20,
   },
   arrow: {
     borderColor: "#0B95BE",
@@ -88,15 +89,16 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginRight: 30,
+    marginRight: 20,
   },
   titleContainer: {
-    marginTop: 8,
+    marginTop: 10,
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 30,
+    color:'white'
   },
   itemContainer: {
     flexDirection: "row",

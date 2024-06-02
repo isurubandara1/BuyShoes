@@ -35,6 +35,12 @@ const products = [
     description: 'Converse Chuck Taylor All Star, Black',
     price: '60$'
   },
+  {
+    id: 6,
+    image: require('../assets/images/adidas/a1.png'),
+    description: 'Converse Taylor new Star, Black',
+    price: '120$'
+  },
   // Add more products as needed
 ];
 
@@ -184,10 +190,10 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor:'black',
   },
   wlimageContainer: {
-    height: 270,
+    height: 200,
     width: '100%',
     backgroundColor: 'lightgray',
   },
