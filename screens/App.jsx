@@ -13,9 +13,12 @@ import CartIconWithBadge from './Cart/CartIconWithBadge';
 import FirstPage from './FirstPage';
 import Login from './Auth/Login';
 import Signup from './Auth/Signup';
+import SubmitForm from './SubmitForm';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+
+
 
 function MainTabs() {
   return (
@@ -57,7 +60,7 @@ function MainTabs() {
         />
         <Tab.Screen name="Cart" component={CartScreen} options={{ headerShown: false }} />
         <Tab.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
-        <Tab.Screen name="LargePage" component={LargePage} options={{ tabBarButton: () => null,headerShown: false } } />
+        <Tab.Screen name="LargePage" component={LargePage} options={{ tabBarButton: () => null, headerShown: false} } />
       </Tab.Navigator>
     </CartProvider>
   );
@@ -70,6 +73,7 @@ function App() {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="Signup" component={Signup} options={{ headerShown: false }} />
       <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
+      <Stack.Screen name="SubmitForm" component={SubmitForm} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }

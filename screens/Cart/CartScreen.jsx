@@ -66,6 +66,10 @@ const CartScreen = () => {
           Total Price: ${calculateTotalPrice()}
         </Text>
       </View>
+     <View style={styles.buyButtonContainer}><TouchableOpacity style={styles.buyButton} onPress={() => navigation.navigate('SubmitForm', { cartItems: cartItems })} >
+            <Text style={styles.buttonText}>Buy Now</Text>
+       </TouchableOpacity>
+      </View> 
     </View>
   );
 };
@@ -144,14 +148,30 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   totalContainer: {
-    padding: 20,
+    padding: 10,
     borderTopWidth: 5,
-    borderColor: "black",
+    borderColor: "white",
     alignItems: "center",
   },
   totalText: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: "bold",
+    color:'white',
+  },
+  buyButtonContainer:{
+    alignItems:'center',
+  },
+  buyButton: {
+    backgroundColor: '#22A7F0',
+    padding: 15,
+    borderRadius:12,
+    width: '45%',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize:17,
   },
 });
 

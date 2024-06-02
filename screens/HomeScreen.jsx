@@ -50,7 +50,7 @@ const HomeScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [sortedProducts, setSortedProducts] = useState(products);
   const [favorites, setFavorites] = useState([]);
-  const navigation = useNavigation(); // Initialize useNavigation hook
+  const navigation = useNavigation(); 
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
@@ -70,18 +70,15 @@ const HomeScreen = () => {
 
   const handleFavoriteToggle = (productId) => {
     const updatedFavorites = [...favorites]; // Create a copy of the current favorites list
-
+  
     const index = updatedFavorites.indexOf(productId);
     if (index === -1) {
       updatedFavorites.push(productId); // Add to favorites if not already in the list
     } else {
       updatedFavorites.splice(index, 1); // Remove from favorites if already in the list
     }
-
-    setFavorites(updatedFavorites); // Update the favorites list
-
-    // Update the favorites in the FavoritesScreen as well
-    navigation.navigate('Favorites', { favorites: updatedFavorites, products });
+  
+    setFavorites(updatedFavorites);
   };
 
   const filteredProducts = sortedProducts.filter(product =>

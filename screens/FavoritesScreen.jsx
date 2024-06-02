@@ -60,17 +60,18 @@ const FavoritesScreen = ({ route, removeFromFavorites }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'black',
     paddingHorizontal: 20,
     paddingTop: 20,
   },
   titleContainer:{
-    marginTop:8,
+    marginTop:10,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 30,
+    color:'white',
   },
   scrollView: {
     paddingBottom: 20,
@@ -85,13 +86,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 220,
     width: '45%',
-    margin: 5,
+    margin: 8,
     padding: 10,
     backgroundColor: '#90CAF9',
     borderRadius: 10,
   },
   arrocontainer:{
     flexDirection:'row',
+    marginTop:20
   },
   arrow: {
     borderColor:'#0B95BE',
