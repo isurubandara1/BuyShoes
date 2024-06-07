@@ -10,14 +10,42 @@ const SubmitForm = ({ route }) => {
   const [telephoneNumber, setTelephoneNumber] = useState('');
   const { cartItems } = route.params;
   const navigation = useNavigation(); 
-  const handleSubmit = () => {
-    // Handle form submission here
-    console.log('Form submitted!');
-    console.log('Full Name:', fullName);
-    console.log('Address:', address);
-    console.log('Town:', town);
-    console.log('Telephone Number:', telephoneNumber);
+  const handleSubmit = async () => {
+    const order = {
+      fullName,
+      address,
+      town,
+      telephoneNumber: parseInt(telephoneNumber), // Ensure phone number is a number
+    };
+  
+    try {
+      const body = JSON.stringify(order);
+      console.log('Submitting order:', body);
+  
+      const response = await fetch('http://192.168.8.157:8080/order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body,
+      });
+  
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Order submitted successfully:', data);
+      } else {
+        const errorText = await response.text();
+        console.error('Unexpected response format:', response.status, response.statusText, errorText);
+        console.log('Response headers:', response.headers);
+        console.log('Response body:', errorText);
+      }
+    } catch (error) {
+      console.error('Error submitting order:', error);
+    }
   };
+  
+  
+
 
   // Calculate total price of all items
   const totalPrice = cartItems.reduce((total, item) => total + item.total, 0);
