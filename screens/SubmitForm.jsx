@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, FlatList, Image } 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'; 
 
+
 const SubmitForm = ({ route }) => {
   const [fullName, setFullName] = useState('');
   const [address, setAddress] = useState('');
@@ -15,7 +16,7 @@ const SubmitForm = ({ route }) => {
       fullName,
       address,
       town,
-      telephoneNumber: parseInt(telephoneNumber), // Ensure phone number is a number
+      telephoneNumber: parseInt(telephoneNumber),
     };
   
     try {
@@ -43,7 +44,6 @@ const SubmitForm = ({ route }) => {
       console.error('Error submitting order:', error);
     }
   };
-  
   
 
 
