@@ -17,6 +17,13 @@ const SubmitForm = ({ route }) => {
       address,
       town,
       telephoneNumber: parseInt(telephoneNumber),
+      items: cartItems.map(item => ({
+        price: item.price,
+        description: item.description,
+        size: item.size,
+        count: item.count,
+        total: item.total,
+    })),
     };
   
     try {
