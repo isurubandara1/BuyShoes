@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // details
     private Long id;
     private String fullName;
     private String address;
