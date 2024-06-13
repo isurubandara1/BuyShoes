@@ -73,6 +73,7 @@ function App() {
       <Stack.Screen name="Signup" component={Signup} options={{ headerShown: false }} />
       <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
       <Stack.Screen name="SubmitForm" component={SubmitForm} options={{ headerShown: false }} />
+      <Stack.Screen name="ProfileScreen" component={ProfileScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }

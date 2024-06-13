@@ -3,14 +3,14 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity, FlatList, Image } 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'; 
 
-
 const SubmitForm = ({ route }) => {
   const [fullName, setFullName] = useState('');
   const [address, setAddress] = useState('');
   const [town, setTown] = useState('');
   const [telephoneNumber, setTelephoneNumber] = useState('');
   const { cartItems } = route.params;
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
+
   const handleSubmit = async () => {
     const order = {
       fullName,
@@ -23,13 +23,13 @@ const SubmitForm = ({ route }) => {
         size: item.size,
         count: item.count,
         total: item.total,
-    })),
+      })),
     };
-  
+
     try {
       const body = JSON.stringify(order);
       console.log('Submitting order:', body);
-  
+
       const response = await fetch('http://192.168.8.157:8080/order', {
         method: 'POST',
         headers: {
@@ -37,10 +37,11 @@ const SubmitForm = ({ route }) => {
         },
         body,
       });
-  
+
       if (response.ok) {
         const data = await response.json();
         console.log('Order submitted successfully:', data);
+        navigation.navigate('ProfileScreen', { order: data });
       } else {
         const errorText = await response.text();
         console.error('Unexpected response format:', response.status, response.statusText, errorText);
@@ -51,8 +52,6 @@ const SubmitForm = ({ route }) => {
       console.error('Error submitting order:', error);
     }
   };
-  
-
 
   // Calculate total price of all items
   const totalPrice = cartItems.reduce((total, item) => total + item.total, 0);
@@ -63,18 +62,17 @@ const SubmitForm = ({ route }) => {
       <View style={styles.itemDetails}>
         <Text style={styles.itemDescription}>{item.description}</Text>
         <Text style={styles.itemPrice}>Price: ${item.price}</Text>
-        <Text >Size: {item.size}</Text>
+        <Text>Size: {item.size}</Text>
         <Text style={styles.itemQuantity}>Quantity: {item.count}</Text>
-        <Text style={styles.itemTotal}>Total: ${item.total}</Text> 
+        <Text style={styles.itemTotal}>Total: ${item.total}</Text>
       </View>
     </View>
   );
-  
 
   return (
     <View style={styles.container}>
-      <View style={styles.arrocontainer}>
-      <TouchableOpacity
+      <View style={styles.arrowContainer}>
+        <TouchableOpacity
           style={styles.arrow}
           onPress={() => navigation.goBack()}
         >
@@ -137,29 +135,29 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'black',
   },
-  arrocontainer:{
-    flexDirection:'row',
-    marginTop:20
+  arrowContainer: {
+    flexDirection: 'row',
+    marginTop: 20,
   },
   arrow: {
-    borderColor:'#0B95BE',
-    borderWidth:3,
-    borderRadius:50,
-    backgroundColor:'#0B95BE',
-    width:50,
-    height:50,
-    alignItems:'center',
-    justifyContent:'center',
-    marginRight:25,
+    borderColor: '#0B95BE',
+    borderWidth: 3,
+    borderRadius: 50,
+    backgroundColor: '#0B95BE',
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 25,
   },
-  titleContainer:{
-    marginTop:8,
+  titleContainer: {
+    marginTop: 8,
   },
   title: {
     fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 20,
-    color:'white',
+    color: 'white',
   },
   itemContainer: {
     flexDirection: 'row',
@@ -202,13 +200,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 5,
     marginBottom: 10,
-    color:'white',
-    textAlign:'center'
+    color: 'white',
+    textAlign: 'center',
   },
   label: {
     fontSize: 16,
     marginBottom: 5,
-    color:'white',
+    color: 'white',
   },
   input: {
     height: 40,
@@ -216,7 +214,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 15,
     paddingHorizontal: 10,
-    backgroundColor:'white'
+    backgroundColor: 'white',
   },
   button: {
     backgroundColor: '#0B95BE',
