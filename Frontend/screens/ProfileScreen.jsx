@@ -17,6 +17,7 @@ const ProfileScreen = ({ route }) => {
   return (
     <View style={styles.container}>
        <Image  style={styles.emptyCartImage} source={require('../assets/images/profile.png')} />
+       <View style={styles.prophoImageContain}><Image  style={styles.prophoImage} source={require('../assets/images/propho.jpg')} /></View>
       <Text style={styles.title}>Order Details</Text>
       
       {order ? (
@@ -41,22 +42,37 @@ const ProfileScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-   // padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: 'black',
+    padding: 10,
   },
   emptyCartImage:{
     width:'100%',
-    height:'40%',
+    height:'60%',
     resizeMode:'stretch'
+  },
+  prophoImage:{
+    width:130,
+    height:130,
+    resizeMode:'cover',
+    borderRadius:60,
+  },
+  prophoImageContain:{
+    position:'absolute',
+    top:250,
+    left:130,
+    width:120,
+    height:100,
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    color:'white',
   },
   info: {
     fontSize: 18,
     marginBottom: 10,
+    color:'white',
   },
   itemContainer: {
     padding: 10,
@@ -65,11 +81,13 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 16,
+    color:'white',
   },
   pendingText: {
     fontSize: 18,
     textAlign: 'center',
     marginTop: 20,
+    color:'white',
   },
 });
 
