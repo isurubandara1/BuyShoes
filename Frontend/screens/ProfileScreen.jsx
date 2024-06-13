@@ -1,115 +1,76 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Platform, Alert } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { StyleSheet, Text, View, FlatList, Image} from 'react-native';
 
+const ProfileScreen = ({ route }) => {
+  const { order } = route.params || {};
 
-const ProfileScreen = () => {
-  const [profileImage, setProfileImage] = useState(require('../assets/images/adidas/a1.png')); // Initial profile image
-
-  // Function to handle image selection from gallery
-  const selectImage = async () => {
-    if (Platform.OS !== 'web') {
-      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-      if (status !== 'granted') {
-        Alert.alert('Permission Denied', 'Sorry, we need camera roll permissions to make this work!');
-        return;
-      }
-    }
-
-    // Launch image picker
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 1,
-    });
-
-    if (!result.cancelled) {
-      setProfileImage({ uri: result.uri });
-    }
-  };
+  const renderItem = ({ item }) => (
+    <View style={styles.itemContainer}>
+      <Text style={styles.itemText}>Description: {item.description}</Text>
+      <Text style={styles.itemText}>Price: ${item.price}</Text>
+      <Text style={styles.itemText}>Size: {item.size}</Text>
+      <Text style={styles.itemText}>Quantity: {item.count}</Text>
+      <Text style={styles.itemText}>Total: ${item.total}</Text>
+    </View>
+  );
 
   return (
     <View style={styles.container}>
-      <View style={styles.profileContainer}>
-        <TouchableOpacity onPress={selectImage}>
-          <Image
-            source={profileImage}
-            style={styles.profileImage}
+       <Image  style={styles.emptyCartImage} source={require('../assets/images/profile.png')} />
+      <Text style={styles.title}>Order Details</Text>
+      
+      {order ? (
+        <>
+          <Text style={styles.info}>Full Name: {order.fullName}</Text>
+          <Text style={styles.info}>Address: {order.address}</Text>
+          <Text style={styles.info}>Town: {order.town}</Text>
+          <Text style={styles.info}>Telephone: {order.telephoneNumber}</Text>
+          <FlatList
+            data={order.items || []}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={renderItem}
           />
-          <View style={styles.cameraIconContainer}>
-            <Ionicons name="camera" size={24} color="white" />
-          </View>
-        </TouchableOpacity>
-        <Text style={styles.name}>John Doe</Text>
-        <Text style={styles.email}>johndoe@example.com</Text>
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Edit Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.logoutButton]}>
-          <Text style={styles.buttonText}>Log Out</Text>
-        </TouchableOpacity>
-      </View>
+        </>
+      ) : (
+        <Text style={styles.pendingText}>Pending Order...</Text>
+      )}
     </View>
   );
 };
 
-export default ProfileScreen;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
-    alignItems: 'center',
-    justifyContent: 'center',
+   // padding: 20,
+    backgroundColor: 'white',
   },
-  profileContainer: {
-    alignItems: 'center',
-    marginBottom: 20,
+  emptyCartImage:{
+    width:'100%',
+    height:'40%',
+    resizeMode:'stretch'
   },
-  profileImage: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-    marginBottom: 10,
-  },
-  cameraIconContainer: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    backgroundColor: '#22A7F0',
-    borderRadius: 50,
-    padding: 5,
-  },
-  name: {
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'white',
+    marginBottom: 20,
   },
-  email: {
-    fontSize: 16,
-    color: 'grey',
-  },
-  buttonContainer: {
-    marginTop: 20,
-  },
-  button: {
-    backgroundColor: '#22A7F0',
-    padding: 15,
-    borderRadius: 12,
-    width: 200,
-    alignItems: 'center',
+  info: {
+    fontSize: 18,
     marginBottom: 10,
   },
-  logoutButton: {
-    backgroundColor: '#FF6347',
+  itemContainer: {
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
   },
-  buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: 17,
+  itemText: {
+    fontSize: 16,
+  },
+  pendingText: {
+    fontSize: 18,
+    textAlign: 'center',
+    marginTop: 20,
   },
 });
+
+export default ProfileScreen;
