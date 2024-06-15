@@ -17,6 +17,7 @@ const ProfileScreen = ({ route }) => {
   return (
     <View style={styles.container}>
        <Image  style={styles.emptyCartImage} source={require('../assets/images/profile.png')} />
+       
        <View style={styles.prophoImageContain}><Image  style={styles.prophoImage} source={require('../assets/images/propho.jpg')} /></View>
       <View style={styles.titleContainer}><Text style={styles.title}>Order Details</Text></View>
       
