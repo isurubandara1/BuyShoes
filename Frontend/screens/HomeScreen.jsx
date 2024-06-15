@@ -38,33 +38,48 @@ const products = [
     id: 6,
     image: require('../assets/images/adidas/a6.png'),
     description: 'Converse Taylor new Star, Black',
-    price: '120$'
+    price: '320$'
   },
   {
     id: 7,
     image: require('../assets/images/adidas/a7.png'),
     description: 'Converse Taylor new Star, Black',
-    price: '120$'
+    price: '280$'
   }, {
     id: 8,
     image: require('../assets/images/adidas/a8.png'),
     description: 'Converse Taylor new Star, Black',
-    price: '120$'
+    price: '121$'
   }, {
     id: 9,
     image: require('../assets/images/adidas/a9.png'),
     description: 'Converse Taylor new Star, Black',
-    price: '120$'
+    price: '500$'
   }, {
     id: 10,
     image: require('../assets/images/adidas/a10.png'),
     description: 'Converse Taylor new Star, Black',
-    price: '120$'
+    price: '225$'
   }, {
     id: 11,
     image: require('../assets/images/adidas/a11.png'),
     description: 'Converse Taylor new Star, Black',
-    price: '120$'
+    price: '128$'
+  }, {
+    id: 12,
+    image: require('../assets/images/adidas/a12.png'),
+    description: 'Converse Taylor new Star, Black',
+    price: '250$'
+  }, {
+    id: 13,
+    image: require('../assets/images/adidas/a13.png'),
+    description: 'Converse Taylor new Star, Black',
+    price: '400$'
+  }, {
+    id: 14,
+    image: require('../assets/images/adidas/a14.png'),
+    description: 'Converse Taylor new Star, Black',
+    price: '320$'
   },
 ];
 
@@ -85,8 +100,6 @@ const HomeScreen = () => {
 
   const images = [
     require('../assets/images/wal0.jpg'),
-    require('../assets/images/wal.jpg'),
-    require('../assets/images/wal3.jpg'),
     require('../assets/images/wal5.jpg'),
   ];
 
@@ -173,9 +186,7 @@ const HomeScreen = () => {
             <Icon name="filter" size={20} color="white" />
           </TouchableOpacity>
         </View>
-        <View style={styles.newCollectionContainer}>
-          <Text style={styles.newCollectionText}>𝐍𝐞𝐰 𝐂𝐨𝐥𝐥𝐞𝐜𝐭𝐢𝐨𝐧 </Text>
-        </View>
+        
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.contentContainer}>
@@ -249,10 +260,10 @@ const styles = StyleSheet.create({
 
   searchContainer: {
     position:'absolute',
-    bottom:60,
+    bottom:0,
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 3,
+    borderWidth: 1,
     borderColor: 'white',
     borderRadius: 10,
     margin: 15,
@@ -299,24 +310,27 @@ const styles = StyleSheet.create({
     width: '45%',
     margin: 5,
     padding: 8,
-    backgroundColor: '#90CAF9',
+    backgroundColor: '#DFB910',
     borderRadius: 10,
   },
   image: {
     width: '100%',
     height: 100,
-    resizeMode: 'cover',
+    resizeMode: 'stretch',
     marginBottom: 10,
   },
   textDescription: {
-    fontSize: 15,
+    fontSize: 16,
     textAlign: 'center',
+    fontStyle:'italic',
   },
   textPrice: {
     fontSize: 20,
     textAlign: 'center',
     fontWeight: '900',
     marginTop: 5,
+    
+    color:'white',
   },
   favoriteIcon: {
     position: 'absolute',
