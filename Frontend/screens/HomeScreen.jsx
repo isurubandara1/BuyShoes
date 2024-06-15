@@ -61,9 +61,7 @@ const HomeScreen = () => {
   const images = [
     require('../assets/images/wal0.jpg'),
     require('../assets/images/wal.jpg'),
-    require('../assets/images/wal2.jpg'),
     require('../assets/images/wal3.jpg'),
-    require('../assets/images/wal4.png'),
     require('../assets/images/wal5.jpg'),
   ];
 
@@ -213,15 +211,14 @@ const styles = StyleSheet.create({
     backgroundColor:'black',
   },
   wlimageContainer: {
-    height: Dimensions.get('window').height*0.5,
     width: '100%',
-    backgroundColor: 'lightgray',
+    height:400,
   },
   wlimage: {
     flex: 1,
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height*0.4,
     resizeMode: 'stretch',
+    height:300,
     opacity: 0.8,
   },
 
