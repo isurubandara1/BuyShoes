@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   description: {
-    fontSize: 20,
+    fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 10,
     color:'white',
@@ -166,8 +166,8 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 25,
     marginBottom: 20,
-    fontWeight
-    : 'bold',
+    fontWeight:'bold',
+    fontStyle:'italic',
     color:'white',
   },
   sizeContainer: {

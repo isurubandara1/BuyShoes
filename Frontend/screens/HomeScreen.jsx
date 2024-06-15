@@ -12,35 +12,60 @@ const products = [
   },
   {
     id: 2,
-    image: require('../assets/images/adidas/a4.png'),
+    image: require('../assets/images/adidas/a2.png'),
     description: 'Adidas Ultraboost 21, White and Black',
     price: '180$'
   },
   {
     id: 3,
-    image: require('../assets/images/adidas/a1.png'),
+    image: require('../assets/images/adidas/a3.png'),
     description: 'Puma RS-X3, Multi-Color',
     price: '110$'
   },
   {
     id: 4,
-    image: require('../assets/images/adidas/a1.png'),
+    image: require('../assets/images/adidas/a4.png'),
     description: 'Reebok Classic Leather, White',
     price: '90$'
   },
   {
     id: 5,
-    image: require('../assets/images/adidas/a1.png'),
+    image: require('../assets/images/adidas/a5.png'),
     description: 'Converse Chuck Taylor All Star, Black',
     price: '60$'
   },
   {
     id: 6,
-    image: require('../assets/images/adidas/a1.png'),
+    image: require('../assets/images/adidas/a6.png'),
     description: 'Converse Taylor new Star, Black',
     price: '120$'
   },
-  // Add more products as needed
+  {
+    id: 7,
+    image: require('../assets/images/adidas/a7.png'),
+    description: 'Converse Taylor new Star, Black',
+    price: '120$'
+  }, {
+    id: 8,
+    image: require('../assets/images/adidas/a8.png'),
+    description: 'Converse Taylor new Star, Black',
+    price: '120$'
+  }, {
+    id: 9,
+    image: require('../assets/images/adidas/a9.png'),
+    description: 'Converse Taylor new Star, Black',
+    price: '120$'
+  }, {
+    id: 10,
+    image: require('../assets/images/adidas/a10.png'),
+    description: 'Converse Taylor new Star, Black',
+    price: '120$'
+  }, {
+    id: 11,
+    image: require('../assets/images/adidas/a11.png'),
+    description: 'Converse Taylor new Star, Black',
+    price: '120$'
+  },
 ];
 
 
