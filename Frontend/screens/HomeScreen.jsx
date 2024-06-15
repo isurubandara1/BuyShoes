@@ -59,9 +59,12 @@ const HomeScreen = () => {
   let scrolled = 0;
 
   const images = [
+    require('../assets/images/wal0.jpg'),
     require('../assets/images/wal.jpg'),
     require('../assets/images/wal2.jpg'),
     require('../assets/images/wal3.jpg'),
+    require('../assets/images/wal4.png'),
+    require('../assets/images/wal5.jpg'),
   ];
 
   useEffect(() => {
@@ -132,20 +135,7 @@ const HomeScreen = () => {
         ))}
       </ScrollView>
       <View style={styles.fixedContent}>
-        <View style={styles.searchContainer}>
-          
-          <Icon name="search" size={20} color="#888" style={styles.searchIcon} />
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search items..."
-            placeholderTextColor={"white"}
-            value={searchText}
-            onChangeText={setSearchText}
-          />
-          <TouchableOpacity onPress={toggleModal} style={styles.filterIcon}>
-            <Icon name="filter" size={20} color="white" />
-          </TouchableOpacity>
-        </View>
+        
         <View style={styles.searchContainer}>
           
           <Icon name="search" size={20} color="#888" style={styles.searchIcon} />
@@ -223,21 +213,21 @@ const styles = StyleSheet.create({
     backgroundColor:'black',
   },
   wlimageContainer: {
-    height: 400,
+    height: Dimensions.get('window').height*0.5,
     width: '100%',
     backgroundColor: 'lightgray',
   },
   wlimage: {
     flex: 1,
     width: Dimensions.get('window').width,
-    height: 250,
+    height: Dimensions.get('window').height*0.4,
     resizeMode: 'stretch',
     opacity: 0.8,
   },
 
   searchContainer: {
-    position: 'absolute',
-    bottom: 59,
+    position:'absolute',
+    bottom:60,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 3,
@@ -246,6 +236,7 @@ const styles = StyleSheet.create({
     margin: 15,
     padding: 5,
     opacity: 1,
+    backgroundColor:'#FFFFFF41'
   },
   searchIcon: {
     marginRight: 10,
