@@ -44,6 +44,7 @@ function MainTabs() {
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
+        
       >
         <Tab.Screen
           name="Home"

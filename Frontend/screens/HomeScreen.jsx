@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TextInput, TouchableOpacity, Modal, Pressable } from 'react-native';
-
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, Text, View, Image, ScrollView, TextInput, TouchableOpacity, Modal, Pressable, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 import { useNavigation } from '@react-navigation/native'; 
 
@@ -50,7 +49,35 @@ const HomeScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [sortedProducts, setSortedProducts] = useState(products);
   const [favorites, setFavorites] = useState([]);
-  const navigation = useNavigation(); 
+  const navigation = useNavigation();
+  
+  const scrollViewRef = useRef(null);
+  const { width } = Dimensions.get('window');
+  const imageWidth = width;
+  const imageCount = 3;
+  let scrollValue = 0;
+  let scrolled = 0;
+
+  const images = [
+    require('../assets/images/wal.jpg'),
+    require('../assets/images/wal2.jpg'),
+    require('../assets/images/wal3.jpg'),
+  ];
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      scrolled++;
+      if (scrolled < imageCount) {
+        scrollValue = scrollValue + imageWidth;
+      } else {
+        scrollValue = 0;
+        scrolled = 0;
+      }
+      scrollViewRef.current.scrollTo({ x: scrollValue, animated: true });
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   const toggleModal = () => {
     setModalVisible(!modalVisible);
@@ -69,15 +96,13 @@ const HomeScreen = () => {
   };
 
   const handleFavoriteToggle = (productId) => {
-    const updatedFavorites = [...favorites]; // Create a copy of the current favorites list
-  
+    const updatedFavorites = [...favorites];
     const index = updatedFavorites.indexOf(productId);
     if (index === -1) {
-      updatedFavorites.push(productId); // Add to favorites if not already in the list
+      updatedFavorites.push(productId);
     } else {
-      updatedFavorites.splice(index, 1); // Remove from favorites if already in the list
+      updatedFavorites.splice(index, 1);
     }
-  
     setFavorites(updatedFavorites);
   };
 
@@ -86,7 +111,7 @@ const HomeScreen = () => {
   );
 
   const navigateToFavorites = () => {
-    navigation.navigate('Favorites', { favorites, products });// Pass favorites and products as navigation parameters
+    navigation.navigate('Favorites', { favorites, products });
   };
 
   const handleImagePress = (product) => {
@@ -95,9 +120,17 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.wlimageContainer}>
-        <Image source={require('../assets/images/wal.jpg')} style={styles.wlimage} />
-      </View>
+      <ScrollView
+        ref={scrollViewRef}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        pagingEnabled
+        style={styles.wlimageContainer}
+      >
+        {images.map((image, index) => (
+          <Image key={index} source={image} style={styles.wlimage} />
+        ))}
+      </ScrollView>
       <View style={styles.fixedContent}>
         <View style={styles.searchContainer}>
           
@@ -190,14 +223,14 @@ const styles = StyleSheet.create({
     backgroundColor:'black',
   },
   wlimageContainer: {
-    height: 220,
+    height: 400,
     width: '100%',
     backgroundColor: 'lightgray',
   },
   wlimage: {
     flex: 1,
-    width: null,
-    height: null,
+    width: Dimensions.get('window').width,
+    height: 250,
     resizeMode: 'stretch',
     opacity: 0.8,
   },

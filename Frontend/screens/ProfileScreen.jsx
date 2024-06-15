@@ -17,7 +17,9 @@ const ProfileScreen = ({ route }) => {
   return (
     <View style={styles.container}>
        <Image  style={styles.emptyCartImage} source={require('../assets/images/profile.png')} />
-      <Text style={styles.title}>Order Details</Text>
+       
+       <View style={styles.prophoImageContain}><Image  style={styles.prophoImage} source={require('../assets/images/propho.jpg')} /></View>
+      <View style={styles.titleContainer}><Text style={styles.title}>Order Details</Text></View>
       
       {order ? (
         <>
@@ -32,7 +34,7 @@ const ProfileScreen = ({ route }) => {
           />
         </>
       ) : (
-        <Text style={styles.pendingText}>Pending Order...</Text>
+        <Text style={styles.pendingText}>Take Order...</Text>
       )}
     </View>
   );
@@ -41,22 +43,40 @@ const ProfileScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-   // padding: 20,
-    backgroundColor: 'white',
+    backgroundColor: 'black',
+    padding: 10,
   },
   emptyCartImage:{
     width:'100%',
-    height:'40%',
+    height:'60%',
     resizeMode:'stretch'
   },
+  prophoImage:{
+    width:130,
+    height:130,
+    resizeMode:'cover',
+    borderRadius:60,
+  },
+  prophoImageContain:{
+    position:'absolute',
+    top:250,
+    left:130,
+    width:120,
+    height:100,
+  },
+  titleContainer: {
+    alignItems: 'center',
+  },
   title: {
-    fontSize: 24,
+    fontSize: 27,
     fontWeight: 'bold',
     marginBottom: 20,
+    color: 'white',
   },
   info: {
     fontSize: 18,
     marginBottom: 10,
+    color: 'white',
   },
   itemContainer: {
     padding: 10,
@@ -65,11 +85,13 @@ const styles = StyleSheet.create({
   },
   itemText: {
     fontSize: 16,
+    color: 'white',
   },
   pendingText: {
     fontSize: 18,
     textAlign: 'center',
     marginTop: 20,
+    color: 'white',
   },
 });
 
