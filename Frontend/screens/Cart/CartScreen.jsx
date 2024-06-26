@@ -127,10 +127,10 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   titleContainer: {
-    marginTop: 10,
+    marginTop: 5,
   },
   title: {
-    fontSize: 26,
+    fontSize: 30,
     fontWeight: "bold",
     marginBottom: 30,
     color: "white",
