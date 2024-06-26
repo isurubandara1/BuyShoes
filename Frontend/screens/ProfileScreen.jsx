@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Image} from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image, ImageBackground } from 'react-native';
 
 const ProfileScreen = ({ route }) => {
   const { order } = route.params || {};
@@ -15,77 +15,76 @@ const ProfileScreen = ({ route }) => {
   );
 
   return (
-    <View style={styles.container}>
-       <Image  style={styles.emptyCartImage} source={require('../assets/images/profile.png')} />
-       
-       <View style={styles.prophoImageContain}><Image  style={styles.prophoImage} source={require('../assets/images/propho.jpg')} /></View>
-      <View style={styles.titleContainer}><Text style={styles.title}>Order Details</Text></View>
-      
-      {order ? (
-        <>
-          <Text style={styles.info}>Full Name: {order.fullName}</Text>
-          <Text style={styles.info}>Address: {order.address}</Text>
-          <Text style={styles.info}>Town: {order.town}</Text>
-          <Text style={styles.info}>Telephone: {order.telephoneNumber}</Text>
-          <FlatList
-            data={order.items || []}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={renderItem}
-          />
-        </>
-      ) : (
-        <Text style={styles.pendingText}>Take Order...</Text>
-      )}
-    </View>
+    <ImageBackground source={require('../assets/images/Profile.jpg')} style={styles.backgroundImage}>
+      <View style={styles.container}>
+        <View style={styles.profileImageContainer}>
+          <Image style={styles.profileImage} source={require('../assets/images/propho.jpg')} />
+        </View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Order Details</Text>
+        </View>
+        {order ? (
+          <>
+            <Text style={styles.info}>Full Name: {order.fullName}</Text>
+            <Text style={styles.info}>Address: {order.address}</Text>
+            <Text style={styles.info}>Town: {order.town}</Text>
+            <Text style={styles.info}>Telephone: {order.telephoneNumber}</Text>
+            <FlatList
+              data={order.items || []}
+              keyExtractor={(item, index) => index.toString()}
+              renderItem={renderItem}
+            />
+          </>
+        ) : (
+          <Text style={styles.pendingText}>Take Order...</Text>
+        )}
+      </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#DFB910',
+    backgroundColor: 'rgba(223, 185, 16, 0.8)', // Semi-transparent background color
     padding: 10,
   },
-  emptyCartImage:{
-    width:'100%',
-    height:'60%',
-    resizeMode:'stretch'
+  profileImageContainer: {
+    alignItems: 'center',
+    marginTop: 20,
   },
-  prophoImage:{
-    width:130,
-    height:130,
-    resizeMode:'cover',
-    borderRadius:60,
-  },
-  prophoImageContain:{
-    position:'absolute',
-    top:250,
-    left:130,
-    width:120,
-    height:100,
+  profileImage: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    resizeMode: 'cover',
   },
   titleContainer: {
     alignItems: 'center',
+    marginVertical: 20,
   },
   title: {
     fontSize: 27,
     fontWeight: 'bold',
-    marginBottom: 20,
     color: 'white',
   },
   info: {
     fontSize: 18,
     marginBottom: 10,
-    color: 'white',
+    color: 'black',
   },
   itemContainer: {
     padding: 10,
-    borderBottomWidth: 1,
+    borderBottomWidth: 5,
     borderBottomColor: '#ccc',
   },
   itemText: {
     fontSize: 16,
-    color: 'white',
+    color: 'black',
   },
   pendingText: {
     fontSize: 18,

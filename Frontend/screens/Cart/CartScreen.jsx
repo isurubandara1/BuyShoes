@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 30,
     color: "white",
-    fontStyle:'italic',
   },
   itemContainer: {
     flexDirection: "row",
