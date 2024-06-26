@@ -65,10 +65,10 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   titleContainer:{
-    marginTop:10,
+    marginTop:2,
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: 'bold',
     marginBottom: 30,
     color:'white',
