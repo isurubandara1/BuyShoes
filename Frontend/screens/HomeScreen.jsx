@@ -38,7 +38,7 @@ const products = [
     id: 6,
     image: require('../assets/images/adidas/a6.png'),
     description: 'Converse Taylor new Star, Black',
-    price: '320$'
+    price: '140$'
   },
   {
     id: 7,
@@ -101,6 +101,8 @@ const HomeScreen = () => {
   const images = [
     require('../assets/images/wal0.jpg'),
     require('../assets/images/wal5.jpg'),
+    require('../assets/images/wal1.jpg'),
+    require('../assets/images/wal0.png'),
   ];
 
   useEffect(() => {

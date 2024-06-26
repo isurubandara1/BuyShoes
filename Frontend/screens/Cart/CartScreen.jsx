@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: "black",
+    backgroundColor: "#DFB910",
   },
   arrocontainer: {
     flexDirection: "row",
@@ -130,15 +130,16 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: "bold",
     marginBottom: 30,
     color: "white",
+    fontStyle:'italic',
   },
   itemContainer: {
     flexDirection: "row",
     marginBottom: 20,
-    backgroundColor: "#90CAF9",
+    backgroundColor: "#F8F9FA",
     padding: 10,
     borderRadius: 10,
     elevation: 5,

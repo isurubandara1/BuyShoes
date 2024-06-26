@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    backgroundColor:'black',
+    backgroundColor:'#DFB910',
   },
   arrow: {
     position:'absolute',
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: 200,
-    resizeMode: 'contain',
+    resizeMode: 'stretch',
   },
   infoContainer: {
     alignItems: 'center',

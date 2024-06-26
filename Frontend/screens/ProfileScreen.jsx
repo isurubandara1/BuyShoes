@@ -43,7 +43,7 @@ const ProfileScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#DFB910',
     padding: 10,
   },
   emptyCartImage:{
