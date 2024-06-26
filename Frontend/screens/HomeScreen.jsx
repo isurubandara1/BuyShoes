@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TextInput, TouchableOpacity, Modal, Pressable, Dimensions } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 import { useNavigation } from '@react-navigation/native'; 
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const products = [
   {
@@ -94,15 +95,15 @@ const HomeScreen = () => {
   const scrollViewRef = useRef(null);
   const { width } = Dimensions.get('window');
   const imageWidth = width;
-  const imageCount = 3;
+  const imageCount = 4;
   let scrollValue = 0;
   let scrolled = 0;
 
   const images = [
     require('../assets/images/wal0.jpg'),
-    require('../assets/images/wal5.jpg'),
-    require('../assets/images/wal1.jpg'), //image
+    require('../assets/images/wal1.jpg'),
     require('../assets/images/wal0.png'),
+    require('../assets/images/wal5.jpg'),
   ];
 
   useEffect(() => {
@@ -160,7 +161,7 @@ const HomeScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ScrollView
         ref={scrollViewRef}
         horizontal
@@ -237,7 +238,7 @@ const HomeScreen = () => {
           </View>
         </View>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 }
 
