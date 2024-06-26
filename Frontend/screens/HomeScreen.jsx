@@ -101,7 +101,7 @@ const HomeScreen = () => {
   const images = [
     require('../assets/images/wal0.jpg'),
     require('../assets/images/wal5.jpg'),
-    require('../assets/images/wal1.jpg'),
+    require('../assets/images/wal1.jpg'), //image
     require('../assets/images/wal0.png'),
   ];
 
