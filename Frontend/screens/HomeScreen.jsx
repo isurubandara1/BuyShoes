@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TextInput, TouchableOpacity, Modal, Pressable, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, TextInput, TouchableOpacity, Modal, Pressable, Dimensions, Animated } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome'; 
 import { useNavigation } from '@react-navigation/native'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -106,6 +106,8 @@ const HomeScreen = () => {
     require('../assets/images/wal5.jpg'),
   ];
 
+  const animatedHeight = useRef(new Animated.Value(300)).current;
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       scrolled++;
@@ -160,19 +162,27 @@ const HomeScreen = () => {
     navigation.navigate('LargePage', { product });
   };
 
+  const handleScroll = (event) => {
+    const yOffset = event.nativeEvent.contentOffset.y;
+    const newHeight = Math.max(150, 300 - yOffset);
+    animatedHeight.setValue(newHeight);
+  };
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView
-        ref={scrollViewRef}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        pagingEnabled
-        style={styles.wlimageContainer}
-      >
-        {images.map((image, index) => (
-          <Image key={index} source={image} style={styles.wlimage} />
-        ))}
-      </ScrollView>
+      <Animated.View style={[styles.wlimageContainer, { height: animatedHeight }]}>
+        <ScrollView
+          ref={scrollViewRef}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          pagingEnabled
+          style={styles.wlimageScroll}
+        >
+          {images.map((image, index) => (
+            <Image key={index} source={image} style={styles.wlimage} />
+          ))}
+        </ScrollView>
+      </Animated.View>
       <View style={styles.fixedContent}>
         
         <View style={styles.searchContainer}>
@@ -191,7 +201,11 @@ const HomeScreen = () => {
         </View>
         
       </View>
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <ScrollView 
+        contentContainerStyle={styles.scrollContainer}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
+      >
         <View style={styles.contentContainer}>
           <View style={styles.imageContainer}>
             {filteredProducts.map((product, index) => (
@@ -251,19 +265,21 @@ const styles = StyleSheet.create({
   },
   wlimageContainer: {
     width: '100%',
-    height:400,
+    overflow: 'hidden',
+  },
+  wlimageScroll: {
+    width: '100%',
+    height: '100%',
   },
   wlimage: {
-    flex: 1,
     width: Dimensions.get('window').width,
     resizeMode: 'stretch',
-    height:300,
+    height: '100%',
     opacity: 0.8,
   },
-
   searchContainer: {
-    position:'absolute',
-    bottom:0,
+    position: 'absolute',
+    bottom: 0,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
@@ -272,7 +288,7 @@ const styles = StyleSheet.create({
     margin: 15,
     padding: 5,
     opacity: 1,
-    backgroundColor:'#FFFFFF41'
+    backgroundColor: '#FFFFFF41'
   },
   searchIcon: {
     marginRight: 10,
@@ -287,18 +303,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: 'white',
   },
-  newCollectionContainer: {
-    position: 'relative',
-    alignItems: 'flex-start',
-    marginLeft: 18,
-    marginTop: 20,
+  scrollContainer: {
+    paddingBottom: 20,
   },
-  newCollectionText: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: "#0D47A1",
-    fontStyle: "italic",
-
+  contentContainer: {
+    alignItems: 'center',
   },
   imageContainer: {
     flexDirection: 'row',
@@ -325,15 +334,14 @@ const styles = StyleSheet.create({
   textDescription: {
     fontSize: 16,
     textAlign: 'center',
-    fontStyle:'italic',
+    fontStyle: 'italic',
   },
   textPrice: {
     fontSize: 20,
     textAlign: 'center',
     fontWeight: '900',
     marginTop: 5,
-    
-    color:'white',
+    color: 'white',
   },
   favoriteIcon: {
     position: 'absolute',
