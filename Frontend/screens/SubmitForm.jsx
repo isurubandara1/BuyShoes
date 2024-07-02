@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, FlatList, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'; 
+import { ScrollView } from 'react-native-gesture-handler';
 
 const SubmitForm = ({ route }) => {
   const [fullName, setFullName] = useState('');
@@ -89,6 +90,7 @@ const SubmitForm = ({ route }) => {
       />
       <Text style={styles.totalText}>Total Price: ${totalPrice.toFixed(2)}</Text>
 
+      <ScrollView>
       <Text style={styles.label}>Full Name</Text>
       <TextInput
         style={styles.input}
@@ -120,7 +122,7 @@ const SubmitForm = ({ route }) => {
         onChangeText={setTelephoneNumber}
         placeholder="Enter your telephone number"
         keyboardType="numeric"
-      />
+      /></ScrollView>
 
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Submit</Text>
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
   },
   arrowContainer: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: 10,
   },
   arrow: {
     borderColor: '#0B95BE',
@@ -161,10 +163,10 @@ const styles = StyleSheet.create({
   },
   itemContainer: {
     flexDirection: 'row',
-    marginBottom: 20,
+    marginBottom: 5,
     borderBottomWidth: 1,
     borderColor: '#ccc',
-    paddingBottom: 10,
+    paddingBottom: 5,
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 10,
