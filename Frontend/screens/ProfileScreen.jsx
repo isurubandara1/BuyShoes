@@ -33,10 +33,10 @@ const ProfileScreen = ({ route }) => {
         </View>
         {order ? (
           <>
-            <Text style={styles.info}>Full Name: {order.fullName}</Text>
-            <Text style={styles.info}>Address: {order.address}</Text>
-            <Text style={styles.info}>Town: {order.town}</Text>
-            <Text style={styles.info}>Telephone: {order.telephoneNumber}</Text>
+            <Text style={styles.info}>🔷 𝑭𝒖𝒍𝒍 𝑵𝒂𝒎𝒆 : {order.fullName}</Text>
+            <Text style={styles.info}>🔷 𝑨𝒅𝒅𝒓𝒆𝒔𝒔 : {order.address}</Text>
+            <Text style={styles.info}>🔷 𝑻𝒐𝒘𝒏 : {order.town}</Text>
+            <Text style={styles.info}>🔷 𝑻𝒆𝒍𝒆𝒑𝒉𝒐𝒏𝒆 : {order.telephoneNumber}</Text>
             <FlatList
               data={order.items || []}
               keyExtractor={(item, index) => index.toString()}
@@ -96,14 +96,13 @@ const styles = StyleSheet.create({
   },
   info: {
     fontSize: 22,
-    fontStyle:'italic',
     fontWeight:'bold',
     marginBottom: 10,
-    color: 'blue',
+    color: 'brown',
   },
   itemContainer: {
     padding: 10,
-    borderBottomWidth: 5,
+    borderBottomWidth: 7,
     borderBottomColor: '#ccc',
   },
   itemText: {
