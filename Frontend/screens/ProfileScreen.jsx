@@ -90,14 +90,16 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   title: {
-    fontSize: 27,
+    fontSize: 30,
     fontWeight: 'bold',
     color: 'white',
   },
   info: {
-    fontSize: 20,
+    fontSize: 22,
+    fontStyle:'italic',
+    fontWeight:'bold',
     marginBottom: 10,
-    color: 'black',
+    color: 'blue',
   },
   itemContainer: {
     padding: 10,
