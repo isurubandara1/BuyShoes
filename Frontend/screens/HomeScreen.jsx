@@ -102,7 +102,6 @@ const HomeScreen = () => {
   const images = [
     require('../assets/images/wal0.jpg'),
     require('../assets/images/wal1.jpg'),
-    require('../assets/images/wal0.png'),
     require('../assets/images/wal5.jpg'),
   ];
 
@@ -376,7 +375,7 @@ const styles = StyleSheet.create({
     elevation: 2,
     marginBottom: 10,
     width: 200,
-    backgroundColor: '#90CAF9',
+    backgroundColor: '#DFB910',
     alignItems: 'center',
   },
   modalButtonText: {
