@@ -1,8 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image, ImageBackground, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
+import { useRoute, useNavigation } from '@react-navigation/native';
 
 const ProfileScreen = ({ route }) => {
   const { order } = route.params || {};
+  
+  const navigation = useNavigation();
 
   const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>
@@ -17,6 +22,9 @@ const ProfileScreen = ({ route }) => {
   return (
     <ImageBackground source={require('../assets/images/Profile.jpg')} style={styles.backgroundImage}>
       <View style={styles.container}>
+      <TouchableOpacity style={styles.arrow} onPress={() => navigation.goBack()}>
+          <Ionicons name="arrow-back" size={24} color="white" />
+        </TouchableOpacity>
         <View style={styles.profileImageContainer}>
           <Image style={styles.profileImage} source={require('../assets/images/propho.jpg')} />
         </View>
@@ -48,6 +56,20 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
   },
+  arrow: {
+    position:'absolute',
+    top: 50,
+    left: 30,
+    zIndex: 1,
+    borderColor:'#0B95BE',
+    borderWidth:3,
+    borderRadius:50,
+    backgroundColor:'#0B95BE',
+    width:50,
+    height:50,
+    alignItems:'center',
+    justifyContent:'center',
+  },
   container: {
     flex: 1,
     backgroundColor: 'rgba(223, 185, 16, 0.8)', // Semi-transparent background color
@@ -73,7 +95,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   info: {
-    fontSize: 18,
+    fontSize: 20,
     marginBottom: 10,
     color: 'black',
   },
